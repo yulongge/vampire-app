@@ -77,7 +77,10 @@ if (false) {}
 "use strict";
 /* harmony import */ var _Users_gyl_Documents_personal_vampire_app_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/@vue/reactivity/dist/reactivity.esm-bundler.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue */ "./node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.js");
 
+
+// import * as echarts from 'echarts';
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: 'Index',
@@ -90,16 +93,11 @@ if (false) {}
       show: false,
       cover: false
     });
-    var handleClick = function handleClick(type, msg) {
-      var cover = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
-      state.show = true;
-      state.msg2 = msg;
-      state.type = type;
-      state.cover = cover;
-    };
-    return Object(_Users_gyl_Documents_personal_vampire_app_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(Object(_Users_gyl_Documents_personal_vampire_app_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])({}, Object(vue__WEBPACK_IMPORTED_MODULE_1__[/* toRefs */ "s"])(state)), {}, {
-      handleClick: handleClick
-    });
+    Object(vue__WEBPACK_IMPORTED_MODULE_2__[/* onMounted */ "w"])(function () {});
+    return Object(_Users_gyl_Documents_personal_vampire_app_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])({}, Object(vue__WEBPACK_IMPORTED_MODULE_1__[/* toRefs */ "s"])(state));
+  },
+  mounted: function mounted() {
+    // this.initChart()
   }
 });
 
@@ -116,30 +114,23 @@ if (false) {}
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return render; });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.js");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/@vue/shared/dist/shared.esm-bundler.js");
 
 var _hoisted_1 = {
-  class: "index"
+  class: "app"
 };
-var _hoisted_2 = /*#__PURE__*/Object(vue__WEBPACK_IMPORTED_MODULE_0__[/* createElementVNode */ "j"])("view", null, [/*#__PURE__*/Object(vue__WEBPACK_IMPORTED_MODULE_0__[/* createElementVNode */ "j"])("img", {
-  src: "",
-  alt: ""
-})], -1 /* HOISTED */);
-var _hoisted_3 = /*#__PURE__*/Object(vue__WEBPACK_IMPORTED_MODULE_0__[/* createElementVNode */ "j"])("view", {
-  class: "btn"
-}, [/*#__PURE__*/Object(vue__WEBPACK_IMPORTED_MODULE_0__[/* createCommentVNode */ "h"])(" <nut-button type=\"primary\" @click=\"handleClick('text', msg2, true)\">点我</nut-button> ")], -1 /* HOISTED */);
-
+var _hoisted_2 = /*#__PURE__*/Object(vue__WEBPACK_IMPORTED_MODULE_0__[/* createElementVNode */ "j"])("view", {
+  class: "app-top"
+}, null, -1 /* HOISTED */);
+var _hoisted_3 = {
+  class: "equipment-list"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  var _component_nut_toast = Object(vue__WEBPACK_IMPORTED_MODULE_0__[/* resolveComponent */ "B"])("nut-toast");
-  return Object(vue__WEBPACK_IMPORTED_MODULE_0__[/* openBlock */ "z"])(), Object(vue__WEBPACK_IMPORTED_MODULE_0__[/* createElementBlock */ "i"])("view", _hoisted_1, [_hoisted_2, Object(vue__WEBPACK_IMPORTED_MODULE_0__[/* createTextVNode */ "m"])(" " + Object(vue__WEBPACK_IMPORTED_MODULE_1__[/* toDisplayString */ "O"])(_ctx.msg) + " ", 1 /* TEXT */), _hoisted_3, Object(vue__WEBPACK_IMPORTED_MODULE_0__[/* createVNode */ "n"])(_component_nut_toast, {
-    msg: _ctx.msg,
-    visible: _ctx.show,
-    "onUpdate:visible": _cache[0] || (_cache[0] = function ($event) {
-      return _ctx.show = $event;
-    }),
-    type: _ctx.type,
-    cover: _ctx.cover
-  }, null, 8 /* PROPS */, ["msg", "visible", "type", "cover"])]);
+  return Object(vue__WEBPACK_IMPORTED_MODULE_0__[/* openBlock */ "z"])(), Object(vue__WEBPACK_IMPORTED_MODULE_0__[/* createElementBlock */ "i"])("view", _hoisted_1, [_hoisted_2, Object(vue__WEBPACK_IMPORTED_MODULE_0__[/* createElementVNode */ "j"])("view", _hoisted_3, [(Object(vue__WEBPACK_IMPORTED_MODULE_0__[/* openBlock */ "z"])(), Object(vue__WEBPACK_IMPORTED_MODULE_0__[/* createElementBlock */ "i"])(vue__WEBPACK_IMPORTED_MODULE_0__[/* Fragment */ "b"], null, Object(vue__WEBPACK_IMPORTED_MODULE_0__[/* renderList */ "A"])(5, function (item) {
+    return Object(vue__WEBPACK_IMPORTED_MODULE_0__[/* createElementVNode */ "j"])("view", {
+      class: "equipment-item",
+      key: item
+    });
+  }), 64 /* STABLE_FRAGMENT */))])]);
 }
 
 /***/ }),
@@ -193,7 +184,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_tarojs_taro_loader_lib_raw_js_index_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/@tarojs/taro-loader/lib/raw.js!./index.vue */ "./node_modules/@tarojs/taro-loader/lib/raw.js!./src/pages/index/index.vue");
 
 
-var config = {"navigationBarTitleText":"首页"};
+var config = {"navigationBarTitleText":"腐蚀监测分析系统","navigationStyle":"custom"};
 
 
 var inst = Page(Object(_tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["createPageConfig"])(_node_modules_tarojs_taro_loader_lib_raw_js_index_vue__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"], 'pages/index/index', {root:{cn:[]}}, config || {}))
