@@ -1,7 +1,16 @@
-# vampire-app
-Test everything for myself
+# vue3-demo
 
-# 腐蚀监测分析系统   
+## 安装
 
+```bash
+yarn # 或 npm install
+```
 
-数据可视化
+## 运行
+
+```bash
+yarn dev:h5 # 运行到H5
+yarn dev:weapp # 运行到微信小程序
+yarn dev:alipay # 运行到支付宝小程序
+yarn dev:tt # 运行到字节跳动小程序
+```

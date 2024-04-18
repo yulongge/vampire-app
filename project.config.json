@@ -1,8 +1,8 @@
 {
   "miniprogramRoot": "./dist",
-  "projectname": "vampire-app",
-  "description": "vampire min program",
-  "appid": "wxbd972aeb302cee02",
+  "projectname": "demo-hola-0.1.7-vue3",
+  "description": "Just For Fun",
+  "appid": "touristappid",
   "setting": {
     "urlCheck": true,
     "es6": false,
