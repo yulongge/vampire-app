@@ -1,42 +1,56 @@
 <template>
   <view class="app">
-    <view class="app-top"></view>
+    <view class="app-top">
+      <EChart ref="canvas" />
+    </view>
     <view class="equipment-list">
       <view class="equipment-item" v-for="item in 5" :key="item"></view>
     </view>
   </view>
 </template>
 
-<script>
-import { reactive, toRefs, ref, onMounted } from 'vue';
-// import * as echarts from 'echarts';
-import echarts from "./echarts";
-
-export default {
-  name: 'Index',
-  components: {
-    
-  },
-  setup(){
-    const state = reactive({
-      msg: '欢迎使用 Vampire App',
-      msg2: '你成功了～',
-      type: 'text',
-      show: false,
-      cover: false
-    });
-    onMounted(() => {
-      
-    })
-
-    return {
-      ...toRefs(state),
+<script setup>
+import { ref, onMounted } from "vue";
+import Taro from "@tarojs/taro";
+import * as echarts from "echarts4taro3/lib/assets/echarts"; // 这里用了内置的，也可以用自定义的 echarts.js
+import { EChart, loadEcharts } from "echarts4taro3";
+loadEcharts(echarts);
+const canvas = ref(null);
+const options = {
+  tooltip: {
+    trigger: "axis",
+    axisPointer: {
+      type: "shadow"
     }
   },
-  mounted () {
-    // this.initChart()
+  xAxis: {
+    type: "category",
+    data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
   },
-}
+  yAxis: {
+    type: "value"
+  },
+  series: [
+    {
+      data: [120, 200, 150, 80, 70, 110, 130],
+      type: "bar"
+    }
+  ]
+};
+onMounted(() => {
+  const echartComponentInstance = canvas.value; // 组件实例
+  Taro.nextTick(() => {
+    // 初始化图表
+    echartComponentInstance.refresh(options).then((myChart) => {
+      /** 异步更新图表数据 */
+      setInterval(() => {
+        let firstValue = options.series[0].data.shift();
+        options.series[0].data.push(firstValue);
+        myChart.setOption(options); // myChart 即为 echarts 实例，可使用的实例方法，具体可参考 echarts 官网
+      }, 2000);
+    });
+  });
+});
 </script>
 
 <style lang="scss">

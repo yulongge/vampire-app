@@ -5286,6 +5286,13 @@ ecc-jsbn@~0.1.1:
     jsbn "~0.1.0"
     safer-buffer "^2.1.0"
 
+echarts4taro3@^1.8.0:
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/echarts4taro3/-/echarts4taro3-1.8.0.tgz#95111b23998b0e6b48451550e03460ce1b77f2d6"
+  integrity sha512-C8NTXwRW07z/LDyOzU45QWjYjyvguNPn865TMfG1xRNHkGzFIMFuEF/U8qv048T3t4OQqZXuH8exbTyFzdLqHA==
+  dependencies:
+    vue-demi "^0.13.11"
+
 echarts@^5.5.0:
   version "5.5.0"
   resolved "https://registry.npmmirror.com/echarts/-/echarts-5.5.0.tgz#c13945a7f3acdd67c134d8a9ac67e917830113ac"
@@ -13956,6 +13963,11 @@ vm2@^3.8.4:
   dependencies:
     acorn "^8.7.0"
     acorn-walk "^8.2.0"
+
+vue-demi@^0.13.11:
+  version "0.13.11"
+  resolved "https://registry.yarnpkg.com/vue-demi/-/vue-demi-0.13.11.tgz#7d90369bdae8974d87b1973564ad390182410d99"
+  integrity sha512-IR8HoEEGM65YY3ZJYAjMlKygDQn25D5ajNFNoKh9RSDMQtlzCxtfQjdQgv9jjK+m3377SsJXY8ysq8kLCZL25A==
 
 vue-eslint-parser@^7.0.0, vue-eslint-parser@^7.10.0:
   version "7.11.0"
