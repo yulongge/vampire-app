@@ -7,8 +7,10 @@
 <script setup>
 import Taro from "@tarojs/taro";
 import "./pie-nest.less";
-import { EChart } from "echarts4taro3";
-import { onMounted, ref } from "vue-demi";
+import * as echarts from "echarts4taro3/lib/assets/echarts"; // 这里用了内置的，也可以用自定义的 echarts.js
+import { EChart, loadEcharts } from "echarts4taro3";
+import { onMounted, ref } from "vue";
+loadEcharts(echarts);
 const canvas = ref(null);
 onMounted(() => {
   const canvasInstance = canvas.value;

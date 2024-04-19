@@ -1,6 +1,6 @@
 {
   "miniprogramRoot": "./",
-  "projectname": "demo-hola-0.1.7-vue3",
+  "projectname": "vampire",
   "appid": "testAppId",
   "setting": {
     "es6": false,

@@ -3,6 +3,7 @@ export default defineAppConfig({
     "pages/index/index",
     "pages/product/index",
     "pages/echart/index",
+    "pages/mine/index"
   ],
   subpackages: [
     {
@@ -110,6 +111,7 @@ export default defineAppConfig({
   },
   tabBar: {
     // custom: true,
+    
     color: "#333",
     selectedColor: "#FFFFFF",
     borderStyle: "white",
@@ -117,21 +119,21 @@ export default defineAppConfig({
     list: [
       {
         pagePath: "pages/index/index",
-        text: "首页",
-        iconPath: "assert/01.png",
-        selectedIconPath: "assert/01.png"
+        text: "",
+        iconPath: "assert/shouye1.png",
+        selectedIconPath: "assert/shouye.png"
       },
       {
         pagePath: "pages/product/index",
-        text: "设备列表",
-        iconPath: "assert/02.png",
-        selectedIconPath: "assert/02.png"
+        text: "",
+        iconPath: "assert/electronics1.png",
+        selectedIconPath: "assert/electronics.png"
       },
       {
-        pagePath: "pages/echart/index",
-        text: "我的",
-        iconPath: "assert/02.png",
-        selectedIconPath: "assert/02.png"
+        pagePath: "pages/mine/index",
+        text: "",
+        iconPath: "assert/my1.png",
+        selectedIconPath: "assert/my.png"
       }
     ]
   }

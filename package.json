@@ -1,8 +1,8 @@
 {
-  "name": "echarts-for-taro3-demo",
+  "name": "vampire",
   "version": "1.0.0",
   "private": true,
-  "description": "demo vue3",
+  "description": "vampire",
   "templateInfo": {
     "name": "vue3",
     "typescript": false,
