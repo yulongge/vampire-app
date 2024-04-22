@@ -10,10 +10,16 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import Taro from "@tarojs/taro";
+import { useShareAppMessage } from '@tarojs/taro';
 import "./index.less";
 const toDetail = () => {
   Taro.navigateTo({
     url: '/package/line-area/pages/line-area/line-area'
   })
 }
+useShareAppMessage((res) => {
+  return {
+    title: '设备列表',
+  }
+})
 </script>

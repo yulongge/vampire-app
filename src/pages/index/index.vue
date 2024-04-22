@@ -17,6 +17,7 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import Taro from "@tarojs/taro";
+import { useShareAppMessage } from '@tarojs/taro'
 import * as echarts from "echarts4taro3/lib/assets/echarts"; // 这里用了内置的，也可以用自定义的 echarts.js
 import { EChart, loadEcharts } from "echarts4taro3";
 import "./index.less";
@@ -246,4 +247,9 @@ onMounted(() => {
     canvasInstance2.refresh(option2);
   });
 });
+useShareAppMessage((res) => {
+  return {
+    title: '腐蚀检测系统',
+  }
+})
 </script>
