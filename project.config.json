@@ -1,8 +1,8 @@
 {
   "miniprogramRoot": "./dist",
-  "projectname": "vampire",
-  "description": "Just For Fun",
-  "appid": "wxbd972aeb302cee02",
+  "projectname": "腐蚀监测平台",
+  "description": "检测设备状态",
+  "appid": "wxb8551990bbf9bbb2",
   "setting": {
     "urlCheck": true,
     "es6": false,

@@ -1,14 +1,15 @@
 <template>
   <view class="app">
-    <view class="app-top">
+    <text v-if="!showInit" class="no-develop">待开发...</text>
+    <view class="app-top" v-if="showInit">
       <EChart ref="canvas" />
     </view>
-    <view class="equipment-list">
+    <view class="equipment-list" v-if="showInit">
       <view class="equipment-item" v-for="item in 5" :key="item" @tap="toDetail">
         常用设备 {{ item }}
       </view>
     </view>
-    <view class="app-bottom">
+    <view class="app-bottom" v-if="showInit">
       <EChart ref="canvas2" />
     </view>
   </view>
@@ -22,6 +23,7 @@ import * as echarts from "echarts4taro3/lib/assets/echarts"; // 这里用了内�
 import { EChart, loadEcharts } from "echarts4taro3";
 import "./index.less";
 loadEcharts(echarts);
+let showInit = ref(false)
 const canvas = ref(null);
 const canvas2 = ref(null)
 const option = {
@@ -243,8 +245,8 @@ onMounted(() => {
   const canvasInstance = canvas.value;
   const canvasInstance2 = canvas2.value;
   Taro.nextTick(() => {
-    canvasInstance.refresh(option);
-    canvasInstance2.refresh(option2);
+    // canvasInstance.refresh(option);
+    // canvasInstance2.refresh(option2);
   });
 });
 useShareAppMessage((res) => {
