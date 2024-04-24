@@ -15,16 +15,23 @@
     "sourceMap": true,
     "baseUrl": ".",
     "rootDir": ".",
-    "jsx": "preserve",
-    "jsxFactory": "Taro.createElement",
+    "jsx": "react",
     "allowJs": true,
     "resolveJsonModule": true,
-    "typeRoots": ["node_modules/@types", "global.d.ts"],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
     "paths": {
-      "@/*": ["src/*"],
-      "@/components/*": ["src/components/*"],
-    }
+      "@/api/*": ["./src/apis/*"],
+      "@/assets/*": ["./src/assets/*"],
+      "@/common/*": ["./src/common/*"],
+      "@/components/*": ["/src/components/*"],
+      "@/env": ["./src/env"],
+      "@/plugins": ["./src/plugins"],
+      "@/store/*": ["./src/store/*"],
+      "@/utils/*": ["./src/utils/*"]
+    },
   },
-  "exclude": ["node_modules", "dist"],
+  "include": ["./src", "global.d.ts"],
   "compileOnSave": false
 }

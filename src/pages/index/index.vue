@@ -1,12 +1,19 @@
 <template>
   <view class="app">
-    <text v-if="!showInit" class="no-develop">待开发...</text>
-    <view class="app-top" v-if="showInit">
-      <EChart ref="canvas" />
+    <!-- 自定义头部导航 -->
+    <CustomNavBar :showBg="showBg" title="腐蚀监测分析平台"/>
+    <!-- 头部内容 -->
+    <view class="app-top">
+      <view class="static-data"></view>
     </view>
-    <view class="equipment-list" v-if="showInit">
-      <view class="equipment-item" v-for="item in 5" :key="item" @tap="toDetail">
-        常用设备 {{ item }}
+    <view class="app-main">
+      <view class="app-main-top">
+        <EChart ref="canvas" />
+      </view>
+      <view class="equipment-list">
+        <view class="equipment-item" v-for="item in 5" :key="item" @tap="toDetail">
+          <!-- 常用设备 {{ item }} -->
+        </view>
       </view>
     </view>
     <view class="app-bottom" v-if="showInit">
@@ -18,11 +25,14 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import Taro from "@tarojs/taro";
-import { useShareAppMessage } from '@tarojs/taro'
+import { useShareAppMessage, usePageScroll } from '@tarojs/taro'
 import * as echarts from "echarts4taro3/lib/assets/echarts"; // 这里用了内置的，也可以用自定义的 echarts.js
 import { EChart, loadEcharts } from "echarts4taro3";
+import CustomNavBar from '../../components/custom-nav-bar/custom-nav-bar'
+
 import "./index.less";
 loadEcharts(echarts);
+let showBg = ref(false)
 let showInit = ref(false)
 const canvas = ref(null);
 const canvas2 = ref(null)
@@ -249,6 +259,14 @@ onMounted(() => {
     // canvasInstance2.refresh(option2);
   });
 });
+usePageScroll((payload) => {
+  const { scrollTop } = payload
+  if(scrollTop >= 1) {
+    showBg.value = true
+  } else {
+    showBg.value = false
+  }
+})
 useShareAppMessage((res) => {
   return {
     title: '腐蚀检测系统',

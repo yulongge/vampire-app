@@ -5,7 +5,7 @@
   "description": "vampire",
   "templateInfo": {
     "name": "vue3",
-    "typescript": false,
+    "typescript": true,
     "css": "less"
   },
   "scripts": {
