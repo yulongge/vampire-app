@@ -1437,6 +1437,13 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
+"@nutui/nutui-taro@3":
+  version "3.3.8"
+  resolved "https://registry.npmmirror.com/@nutui/nutui-taro/-/nutui-taro-3.3.8.tgz#59ab994740a9bcf59093139286e94e45c090fea4"
+  integrity sha512-alzaaUhX4YuTRcnSN0E15fADstEd/OaolFgN04sWyQqrJvVS+xTjqQF5fOugn37RV1KI2Y/eseIN58tZyhF3KA==
+  dependencies:
+    sass "^1.50.0"
+
 "@parcel/css@^1.4.0":
   version "1.14.0"
   resolved "https://registry.npmmirror.com/@parcel/css/-/css-1.14.0.tgz#233750a1e3648b3746f27c2d8f3fd85a2290e512"
@@ -10372,6 +10379,15 @@ sass@1.50.0:
   version "1.50.0"
   resolved "https://registry.npmmirror.com/sass/-/sass-1.50.0.tgz#3e407e2ebc53b12f1e35ce45efb226ea6063c7c8"
   integrity sha512-cLsD6MEZ5URXHStxApajEh7gW189kkjn4Rc8DQweMyF+o5HF5nfEz8QYLMlPsTOD88DknatTmBWkOcw5/LnJLQ==
+  dependencies:
+    chokidar ">=3.0.0 <4.0.0"
+    immutable "^4.0.0"
+    source-map-js ">=0.6.2 <2.0.0"
+
+sass@^1.50.0:
+  version "1.75.0"
+  resolved "https://registry.npmmirror.com/sass/-/sass-1.75.0.tgz#91bbe87fb02dfcc34e052ddd6ab80f60d392be6c"
+  integrity sha512-ShMYi3WkrDWxExyxSZPst4/okE9ts46xZmJDSawJQrnte7M1V9fScVB+uNXOVKRBt0PggHOwoZcn8mYX4trnBw==
   dependencies:
     chokidar ">=3.0.0 <4.0.0"
     immutable "^4.0.0"

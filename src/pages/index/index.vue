@@ -4,11 +4,24 @@
     <CustomNavBar :showBg="showBg" title="腐蚀监测分析平台"/>
     <!-- 头部内容 -->
     <view class="app-top">
-      <view class="static-data"></view>
+      <view class="static-data">
+        <!-- <nut-swiper
+          :init-page="2"
+          :auto-play="3000"
+          pagination-visible
+          pagination-color="#426543"
+          pagination-unselected-color="#808080"
+        >
+          <nut-swiper-item v-for="(item, index) in list" :key="index" style="height: 150px">
+            <img :src="item" alt="" style="height: 100%; width: 100%" draggable="false" />
+          </nut-swiper-item>
+        </nut-swiper> -->
+      </view>
     </view>
     <view class="app-main">
       <view class="app-main-top">
-        <EChart ref="canvas" />
+        <!-- <EChart ref="canvas" /> -->
+        <!-- 关注设备信息-饼状图 -->
       </view>
       <view class="equipment-list">
         <view class="equipment-item" v-for="item in 5" :key="item" @tap="toDetail">
@@ -36,6 +49,12 @@ let showBg = ref(false)
 let showInit = ref(false)
 const canvas = ref(null);
 const canvas2 = ref(null)
+const list = ref([
+  'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
+  'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
+  'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
+  'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
+])
 const option = {
   tooltip: {
     trigger: 'item'

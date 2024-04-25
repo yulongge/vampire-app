@@ -1,14 +1,20 @@
 const config = {
-  projectName: "echarts-for-taro3-demo-vue3",
-  designWidth: 750,
+  projectName: "fushi system platform",
+  designWidth (input) {
+    if (input?.file?.replace(/\\+/g, '/').indexOf('@nutui') > -1) {
+      return 375
+    }
+    return 750
+  },
+  plugins: [],
   deviceRatio: {
     640: 2.34 / 2,
     750: 1,
-    828: 1.81 / 2
+    828: 1.81 / 2,
+    375: 2 / 1
   },
   sourceRoot: "src",
   outputRoot: `dist/${process.env.TARO_ENV}`,
-  plugins: [],
   defineConstants: {},
   copy: {
     patterns: [],

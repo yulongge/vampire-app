@@ -22,7 +22,7 @@
       </view>
     </view>
 
-    <button class="echart-btn" @tap="toEchart">图形分析</button>
+    <!-- <button class="echart-btn" @tap="toEchart">图形分析</button> -->
   </view>
 </template>
 <script setup>

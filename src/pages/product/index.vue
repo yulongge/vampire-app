@@ -1,7 +1,8 @@
 <template>
   <view class="product-wrap">
+    <view class="filter">filter</view>
     <view class="equipment-list">
-      <view class="equipment-item" v-for="item in 10" :key="item" @tap="toDetail">
+      <view class="equipment-item" v-for="item in 20" :key="item" @tap="toDetail">
         设备 {{ item }}
       </view>
     </view>

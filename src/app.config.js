@@ -1,9 +1,9 @@
 export default defineAppConfig({
   pages: [
     "pages/index/index",
-    // "pages/product/index",
-    // "pages/echart/index",
-    // "pages/mine/index"
+    "pages/product/index",
+    "pages/echart/index",
+    "pages/mine/index"
   ],
   // subpackages: [
   //   {
@@ -111,30 +111,30 @@ export default defineAppConfig({
     // avigationBarBackgroundColor: 'transparent', // 导航栏背景颜色  
     // navigationBarTextStyle: 'white', // 导航栏标题颜色  
   },
-  // tabBar: {
-  //   color: "#333",
-  //   selectedColor: "#FFFFFF",
-  //   borderStyle: "white",
-  //   backgroundColor: "#72afd3",
-  //   list: [
-  //     {
-  //       pagePath: "pages/index/index",
-  //       text: "",
-  //       iconPath: "assert/shouye1.png",
-  //       selectedIconPath: "assert/shouye.png"
-  //     },
-  //     {
-  //       pagePath: "pages/product/index",
-  //       text: "",
-  //       iconPath: "assert/electronics1.png",
-  //       selectedIconPath: "assert/electronics.png"
-  //     },
-  //     {
-  //       pagePath: "pages/mine/index",
-  //       text: "",
-  //       iconPath: "assert/my1.png",
-  //       selectedIconPath: "assert/my.png"
-  //     }
-  //   ]
-  // }
+  tabBar: {
+    color: "#333",
+    selectedColor: "#FFFFFF",
+    borderStyle: "black",
+    backgroundColor: "#ffffff",
+    list: [
+      {
+        pagePath: "pages/index/index",
+        text: "",
+        iconPath: "assert/shouye1.png",
+        selectedIconPath: "assert/shouye1.png"
+      },
+      {
+        pagePath: "pages/product/index",
+        text: "",
+        iconPath: "assert/electronics1.png",
+        selectedIconPath: "assert/electronics1.png"
+      },
+      {
+        pagePath: "pages/mine/index",
+        text: "",
+        iconPath: "assert/my1.png",
+        selectedIconPath: "assert/my1.png"
+      }
+    ]
+  }
 });
