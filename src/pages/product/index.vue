@@ -12,7 +12,7 @@
 import { ref, onMounted } from "vue";
 import Taro from "@tarojs/taro";
 import { useShareAppMessage } from '@tarojs/taro';
-import "./index.less";
+import "./index.scss";
 const toDetail = () => {
   Taro.navigateTo({
     url: '/package/line-area/pages/line-area/line-area'

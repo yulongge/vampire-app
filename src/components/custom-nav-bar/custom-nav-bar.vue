@@ -10,7 +10,7 @@
 import { ref, defineProps, computed } from 'vue'
 import { getSystemInfoSync, getMenuButtonBoundingClientRect } from "@tarojs/taro"
 
-import './custom-nav-bar.less'
+import './custom-nav-bar.scss'
 const props = defineProps(['title', 'showBg']);
 // let navbarHeight = ref(0)
 const getWeChatCapsuleInfo = () => {

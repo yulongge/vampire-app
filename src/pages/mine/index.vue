@@ -28,7 +28,7 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import Taro from "@tarojs/taro";
-import "./index.less";
+import "./index.scss";
 let userInfo = ref(null)
 let avatarUrl = ref('')
 const getUserInfo = (e) => {

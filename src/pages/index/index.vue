@@ -43,7 +43,7 @@ import * as echarts from "echarts4taro3/lib/assets/echarts"; // 这里用了内�
 import { EChart, loadEcharts } from "echarts4taro3";
 import CustomNavBar from '../../components/custom-nav-bar/custom-nav-bar'
 
-import "./index.less";
+import "./index.scss";
 loadEcharts(echarts);
 let showBg = ref(false)
 let showInit = ref(false)
