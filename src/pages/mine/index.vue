@@ -1,11 +1,15 @@
 <template>
   <view class="mine-wrap">
     <view class="info-card">
-      <button v-if="!avatarUrl" open-type="chooseAvatar" @chooseavatar="getUserInfo" class="avatar">授权</button>
+      <!-- <button v-if="!avatarUrl" open-type="chooseAvatar" @chooseavatar="getUserInfo" class="avatar">授权</button>
       <view v-else>
         <image :src="avatarUrl" class="avatar"></image>
         <input type="nickname" placeholder="请输入昵称"/>
-      </view>
+      </view> -->
+      <nut-avatar
+        size="large"
+        icon="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
+      ></nut-avatar>
     </view>
     <view class="info-msg">
       <view class="info-item">
@@ -21,7 +25,11 @@
         <text class="info-item-val">苏家坨什么鬼地方</text>
       </view>
     </view>
-
+    <nut-tabbar :bottom="true" :safe-area-inset-bottom="true" active-color="#1E90FF" @tab-switch="tabSwitch">
+      <nut-tabbar-item tab-title="首页" to="/pages/index/index" icon="home"></nut-tabbar-item>
+      <nut-tabbar-item tab-title="设备" to="/pages/product/index" icon="category"></nut-tabbar-item>
+      <nut-tabbar-item tab-title="我的" to="/pages/mine/index" icon="my"></nut-tabbar-item>
+    </nut-tabbar>
     <!-- <button class="echart-btn" @tap="toEchart">图形分析</button> -->
   </view>
 </template>
@@ -41,5 +49,16 @@ const toEchart = () => {
   Taro.navigateTo({
     url: '/pages/echart/index',
   })
+}
+const tabSwitch = (item, index) => {
+  console.log(item, index, 'val')
+  const tablist = [
+    `/pages/index/index`,
+    `/pages/product/index`,
+    `/pages/mine/index`
+  ]
+  Taro.navigateTo({
+    url: tablist[index]
+  });
 }
 </script>

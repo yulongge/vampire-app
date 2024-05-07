@@ -5,7 +5,7 @@
     <!-- 头部内容 -->
     <view class="app-top">
       <view class="static-data">
-        <!-- <nut-swiper
+        <nut-swiper
           :init-page="2"
           :auto-play="3000"
           pagination-visible
@@ -15,23 +15,30 @@
           <nut-swiper-item v-for="(item, index) in list" :key="index" style="height: 150px">
             <img :src="item" alt="" style="height: 100%; width: 100%" draggable="false" />
           </nut-swiper-item>
-        </nut-swiper> -->
+        </nut-swiper>
+      </view>
+      <!-- 关注设备信息-饼状图 -->
+      <view class="app-main-top">
+        <EChart ref="canvas" />
       </view>
     </view>
     <view class="app-main">
-      <view class="app-main-top">
-        <!-- <EChart ref="canvas" /> -->
-        <!-- 关注设备信息-饼状图 -->
-      </view>
       <view class="equipment-list">
         <view class="equipment-item" v-for="item in 5" :key="item" @tap="toDetail">
           <!-- 常用设备 {{ item }} -->
+          <view class="equipment-info">设备{{ item }}</view>
+          <nut-circleprogress :progress="20" color="#1E90FF"> </nut-circleprogress>
         </view>
       </view>
     </view>
-    <view class="app-bottom" v-if="showInit">
-      <EChart ref="canvas2" />
+    <view class="app-bottom">
+      <!-- <EChart ref="canvas2" /> -->
     </view>
+    <nut-tabbar :bottom="true" :safe-area-inset-bottom="true" active-color="#1E90FF" @tab-switch="tabSwitch">
+      <nut-tabbar-item tab-title="首页" to="/pages/index/index" icon="home"></nut-tabbar-item>
+      <nut-tabbar-item tab-title="设备" to="/pages/product/index" icon="category"></nut-tabbar-item>
+      <nut-tabbar-item tab-title="我的" to="/pages/mine/index" icon="my"></nut-tabbar-item>
+    </nut-tabbar>
   </view>
 </template>
 
@@ -269,12 +276,22 @@ const toDetail = () => {
     url: '/package/line-area/pages/line-area/line-area'
   })
 }
-
+const tabSwitch = (item, index) => {
+  console.log(item, index, 'val')
+  const tablist = [
+    `/pages/index/index`,
+    `/pages/product/index`,
+    `/pages/mine/index`
+  ]
+  Taro.navigateTo({
+    url: tablist[index]
+  });
+}
 onMounted(() => {
   const canvasInstance = canvas.value;
   const canvasInstance2 = canvas2.value;
   Taro.nextTick(() => {
-    // canvasInstance.refresh(option);
+    canvasInstance.refresh(option);
     // canvasInstance2.refresh(option2);
   });
 });
