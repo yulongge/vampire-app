@@ -7,11 +7,40 @@
         <input type="nickname" placeholder="请输入昵称"/>
       </view> -->
       <nut-avatar
-        size="large"
-        icon="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
-      ></nut-avatar>
+        size="100"
+        icon="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png">
+      </nut-avatar>
+      <view class="nickname">GYL</view>
+      <view class="profile">苏家坨镇，镇长</view>
     </view>
-    <view class="info-msg">
+
+    <view class="mine-item">
+      <nut-icon name="people"></nut-icon>
+      <view class="item-title">Infomation</view>
+      <nut-icon name="rect-right"></nut-icon>
+    </view>
+    <view class="mine-item">
+      <nut-icon name="setting"></nut-icon>
+      <view class="item-title">Setting</view>
+      <nut-icon name="rect-right"></nut-icon>
+    </view>
+
+    <view class="mine-options">
+      <view class="mine-options-title">通用</view>
+      <view class="mine-options-item">
+        <nut-icon name="service"></nut-icon>
+        <view class="item-title">Customer</view>
+        <nut-switch v-model="checked" />
+      </view>
+      <view class="mine-options-item">
+        <nut-icon name="service"></nut-icon>
+        <view class="item-title">Theme</view>
+        <nut-switch v-model="checked" />
+      </view>
+    </view>
+
+    
+    <!-- <view class="info-msg">
       <view class="info-item">
         <text class="info-item-label">所属公司:</text>
         <text class="info-item-val">劳改所</text>
@@ -24,12 +53,12 @@
         <text class="info-item-label">地址:</text>
         <text class="info-item-val">苏家坨什么鬼地方</text>
       </view>
-    </view>
-    <nut-tabbar :bottom="true" :safe-area-inset-bottom="true" active-color="#1E90FF" @tab-switch="tabSwitch">
+    </view> -->
+    <!-- <nut-tabbar :bottom="true" :safe-area-inset-bottom="true" active-color="#1E90FF" @tab-switch="tabSwitch">
       <nut-tabbar-item tab-title="首页" to="/pages/index/index" icon="home"></nut-tabbar-item>
       <nut-tabbar-item tab-title="设备" to="/pages/product/index" icon="category"></nut-tabbar-item>
       <nut-tabbar-item tab-title="我的" to="/pages/mine/index" icon="my"></nut-tabbar-item>
-    </nut-tabbar>
+    </nut-tabbar> -->
     <!-- <button class="echart-btn" @tap="toEchart">图形分析</button> -->
   </view>
 </template>
