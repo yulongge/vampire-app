@@ -5,6 +5,15 @@ export default {
     "pages/product/index",
     "pages/mine/index"
   ],
+  subpackages: [
+    {
+      "root": "package/product",
+      "pages": [
+        "pages/index/index",
+        "pages/detail/index",
+      ]
+    },
+  ],
   // tabBar: {
   //   color: "#333",
   //   selectedColor: "#FFFFFF",

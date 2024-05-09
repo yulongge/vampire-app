@@ -1,8 +1,8 @@
 {
-  "name": "fushi",
+  "name": "Tntelligent System",
   "version": "1.0.0",
   "private": true,
-  "description": "fushi platform",
+  "description": "智能药剂加注系统，远程操控平台",
   "templateInfo": {
     "name": "vue3-NutUI",
     "typescript": true,

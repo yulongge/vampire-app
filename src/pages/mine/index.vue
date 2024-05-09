@@ -65,6 +65,7 @@ import CustomTabBar from '../../components/custom-tabbar/custom-tabbar'
 import "./index.scss";
 let userInfo = ref(null)
 let avatarUrl = ref('')
+let checked = ref(false)
 const getUserInfo = (e) => {
   console.log(e)
   avatarUrl.value = e.detail.avatarUrl

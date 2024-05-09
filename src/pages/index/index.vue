@@ -1,7 +1,7 @@
 <template>
   <view class="app">
     <!-- 自定义头部导航 -->
-    <CustomNavBar :showBg="showBg" title="腐蚀监测分析平台"/>
+    <CustomNavBar :showBg="showBg" title="智能药剂加注系统"/>
     <!-- 头部内容 -->
     <view class="app-top">
       <view class="static-data">
@@ -25,7 +25,7 @@
     <view class="app-main">
       <view class="equipment-list">
         <view class="equipment-item" v-for="item in 5" :key="item" @tap="toDetail">
-          <!-- 常用设备 {{ item }} -->
+          <!-- 常用设备 -->
           <view class="equipment-info">设备{{ item }}</view>
           <nut-circleprogress :progress="20" color="#1E90FF"> </nut-circleprogress>
         </view>
@@ -77,9 +77,11 @@ const option = {
       startAngle: 180,
       endAngle: 360,
       data: [
-        { value: 1048, name: '腐蚀度' },
-        { value: 735, name: '厚度' },
-        { value: 580, name: '深度' },
+        { value: 1048, name: '流量' },
+        { value: 735, name: '压力' },
+        { value: 580, name: '温度' },
+        { value: 580, name: '腐蚀速率' },
+        { value: 580, name: '介质流速' },
       ]
     }
   ]
@@ -269,7 +271,7 @@ const option2 = {
 };
 const toDetail = () => {
   Taro.navigateTo({
-    url: '/package/line-area/pages/line-area/line-area'
+    url: '/package/product/pages/detail/index'
   })
 }
 
