@@ -11,17 +11,14 @@
         设备 {{ item }}
       </view>
     </view>
-    <!-- <nut-tabbar :bottom="true" :safe-area-inset-bottom="true" active-color="#1E90FF" @tab-switch="tabSwitch">
-      <nut-tabbar-item tab-title="首页" to="/pages/index/index" icon="home"></nut-tabbar-item>
-      <nut-tabbar-item tab-title="设备" to="/pages/product/index" icon="category"></nut-tabbar-item>
-      <nut-tabbar-item tab-title="我的" to="/pages/mine/index" icon="my"></nut-tabbar-item>
-    </nut-tabbar> -->
+    <CustomTabBar />
   </view>
 </template>
 <script setup>
 import { ref, onMounted, reactive } from "vue";
 import Taro from "@tarojs/taro";
 import { useShareAppMessage } from '@tarojs/taro';
+import CustomTabBar from '../../components/custom-tabbar/custom-tabbar'
 import "./index.scss";
 const state = reactive({
   options1: [
@@ -41,17 +38,6 @@ const toDetail = () => {
   Taro.navigateTo({
     url: '/package/line-area/pages/line-area/line-area'
   })
-}
-const tabSwitch = (item, index) => {
-  console.log(item, index, 'val')
-  const tablist = [
-    `/pages/index/index`,
-    `/pages/product/index`,
-    `/pages/mine/index`
-  ]
-  Taro.navigateTo({
-    url: tablist[index]
-  });
 }
 useShareAppMessage((res) => {
   return {

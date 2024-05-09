@@ -34,11 +34,7 @@
     <view class="app-bottom">
       <!-- <EChart ref="canvas2" /> -->
     </view>
-    <!-- <nut-tabbar :bottom="true" :safe-area-inset-bottom="true" active-color="#1E90FF" @tab-switch="tabSwitch">
-      <nut-tabbar-item tab-title="首页" to="/pages/index/index" icon="home"></nut-tabbar-item>
-      <nut-tabbar-item tab-title="设备" to="/pages/product/index" icon="category"></nut-tabbar-item>
-      <nut-tabbar-item tab-title="我的" to="/pages/mine/index" icon="my"></nut-tabbar-item>
-    </nut-tabbar> -->
+    <CustomTabBar />
   </view>
 </template>
 
@@ -49,7 +45,7 @@ import { useShareAppMessage, usePageScroll } from '@tarojs/taro'
 import * as echarts from "echarts4taro3/lib/assets/echarts"; // 这里用了内置的，也可以用自定义的 echarts.js
 import { EChart, loadEcharts } from "echarts4taro3";
 import CustomNavBar from '../../components/custom-nav-bar/custom-nav-bar'
-
+import CustomTabBar from '../../components/custom-tabbar/custom-tabbar'
 import "./index.scss";
 loadEcharts(echarts);
 let showBg = ref(false)
@@ -276,17 +272,7 @@ const toDetail = () => {
     url: '/package/line-area/pages/line-area/line-area'
   })
 }
-const tabSwitch = (item, index) => {
-  console.log(item, index, 'val')
-  const tablist = [
-    `/pages/index/index`,
-    `/pages/product/index`,
-    `/pages/mine/index`
-  ]
-  Taro.navigateTo({
-    url: tablist[index]
-  });
-}
+
 onMounted(() => {
   const canvasInstance = canvas.value;
   const canvasInstance2 = canvas2.value;

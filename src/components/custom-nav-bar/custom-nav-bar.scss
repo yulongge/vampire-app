@@ -33,7 +33,8 @@
   }
 }
 .navbar-bg {
-  background: #fff;
+  // background: #fff;
+  backdrop-filter: blur(14px);
   .content-bar {
     &-title {
       color: #000;
