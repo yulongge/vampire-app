@@ -66,6 +66,16 @@
       .equipment-info {
         flex: 1;
         text-align: left;
+        display: flex;
+        flex-direction: column;
+        .name {
+          font-size: 32rpx;
+        }
+        .desc {
+          font-size: 20rpx;
+          color: #678;
+          margin-top: 30rpx;
+        }
       }
     }
     .equipment-item:last-child {

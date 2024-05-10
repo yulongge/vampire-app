@@ -4,11 +4,16 @@
       <nut-menu>
         <nut-menu-item v-model="state.value1" :options="state.options1" />
         <nut-menu-item v-model="state.value2" @change="handleChange" :options="state.options2" />
+        <nut-menu-item v-model="state.value3" @change="handleChange" :options="state.options3" />
       </nut-menu>
     </view>
     <view class="equipment-list">
       <view class="equipment-item" v-for="item in 20" :key="item" @tap="toDetail">
-        设备 {{ item }}
+        <view class="equipment-info">
+          <text class="name">设备{{ item }}</text>
+          <text class="desc">压力：22，温度：50度,腐蚀效率：30%</text>
+        </view>
+        <nut-circleprogress :progress="item * 10" color="#1E90FF"> </nut-circleprogress>
       </view>
     </view>
     <CustomTabBar />
@@ -27,12 +32,20 @@ const state = reactive({
     { text: '废弃设备', value: 2 }
   ],
   options2: [
+    { text: '各项指标', value: 0 },
+    { text: '流速', value: 1 },
+    { text: '温度', value: 3 },
+    { text: '腐蚀度', value: 4 },
+    { text: '压力', value: 5 }
+  ],
+  options3: [
     { text: '默认排序', value: 'a' },
     { text: '腐蚀度', value: 'b' },
     { text: '厚度', value: 'c' },
   ],
   value1: 0,
-  value2: 'a'
+  value2: 0,
+  value3: 'a'
 })
 const toDetail = () => {
   Taro.navigateTo({

@@ -14,6 +14,7 @@
     text-align: center;
     line-height: 80rpx;
     box-shadow: 0rpx 2rpx 6rpx -2rpx rgba(0, 0, 0, 0.2);
+    z-index: 999;
   }
   .app-top {
     width: 100%;
@@ -32,12 +33,26 @@
     box-sizing: border-box;
     .equipment-item {
       background-color: #fff;
-      height: 160rpx;
-      margin-bottom: 20rpx;
       border-radius: 10rpx;
       text-align: center;
-      line-height: 160rpx;
       border-bottom: 1rpx solid #efefef;
+      padding: 20rpx 0rpx;
+      display: flex;
+      align-items: center;
+      .equipment-info {
+        flex: 1;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        .name {
+          font-size: 32rpx;
+        }
+        .desc {
+          font-size: 20rpx;
+          color: #678;
+          margin-top: 30rpx;
+        }
+      }
     }
     .equipment-item:last-child {
       margin-bottom: unset;

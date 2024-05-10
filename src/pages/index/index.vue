@@ -26,8 +26,11 @@
       <view class="equipment-list">
         <view class="equipment-item" v-for="item in 5" :key="item" @tap="toDetail">
           <!-- 常用设备 -->
-          <view class="equipment-info">设备{{ item }}</view>
-          <nut-circleprogress :progress="20" color="#1E90FF"> </nut-circleprogress>
+          <view class="equipment-info">
+            <text class="name">设备{{ item }}</text>
+            <text class="desc">压力：22，温度：50度,腐蚀效率：30%</text>
+          </view>
+          <nut-circleprogress :progress="item * 10" color="#1E90FF"> </nut-circleprogress>
         </view>
       </view>
     </view>
