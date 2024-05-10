@@ -61,7 +61,7 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import Taro from "@tarojs/taro";
-import CustomTabBar from '../../components/custom-tabbar/custom-tabbar'
+import CustomTabBar from '../../../../components/custom-tabbar/custom-tabbar'
 import "./index.scss";
 let userInfo = ref(null)
 let avatarUrl = ref('')

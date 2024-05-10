@@ -12,7 +12,7 @@ import { ref, onMounted } from "vue";
 const tablist = [
   `/pages/index/index`,
   `/package/product/pages/index/index`,
-  `/pages/mine/index`
+  `/package/mine/pages/index/index`
 ]
 let currnetIndex = ref(0)
 const currentPage =  Taro.getCurrentInstance().router?.path || ''

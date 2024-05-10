@@ -1,9 +1,6 @@
 export default {
   pages: [
-    'pages/index/index',
-    'pages/bar-basic/bar-basic',
-    "pages/product/index",
-    "pages/mine/index"
+    'pages/index/index'
   ],
   subpackages: [
     {
@@ -11,6 +8,12 @@ export default {
       "pages": [
         "pages/index/index",
         "pages/detail/index",
+      ]
+    },
+    {
+      "root": "package/mine",
+      "pages": [
+        "pages/index/index",
       ]
     },
   ],
