@@ -17,6 +17,9 @@
       </view>
     </view>
     <CustomTabBar />
+    <view class="add-btn" @tap="addProduct">
+      <nut-icon name="uploader" color="#1E90FF" size="50px"></nut-icon>
+    </view>
   </view>
 </template>
 <script setup>
@@ -47,6 +50,7 @@ const state = reactive({
   value2: 0,
   value3: 'a'
 })
+
 const toDetail = () => {
   Taro.navigateTo({
     url: '/package/product/pages/detail/index'
@@ -57,4 +61,12 @@ useShareAppMessage((res) => {
     title: '设备列表',
   }
 })
+const addProduct = () => {
+  Taro.navigateTo({
+    url: '/package/product/pages/add/index'
+  })
+}
+onMounted(() => {
+  
+});
 </script>

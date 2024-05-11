@@ -24,7 +24,11 @@
       <view class="item-title">Setting</view>
       <nut-icon name="rect-right"></nut-icon>
     </view>
-
+    <view class="mine-item">
+      <nut-icon name="setting"></nut-icon>
+      <view class="item-title">添加设备</view>
+      <nut-icon name="rect-right"></nut-icon>
+    </view>
     <view class="mine-options">
       <view class="mine-options-title">通用</view>
       <view class="mine-options-item">

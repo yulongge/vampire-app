@@ -8,6 +8,8 @@ export default {
       "pages": [
         "pages/index/index",
         "pages/detail/index",
+        "pages/options/index",
+        "pages/add/index",
       ]
     },
     {
