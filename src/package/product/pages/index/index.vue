@@ -18,7 +18,7 @@
     </view>
     <CustomTabBar />
     <view class="add-btn" @tap="addProduct">
-      <nut-icon name="uploader" color="#1E90FF" size="50px"></nut-icon>
+      <nut-icon name="uploader" color="#1E90FF" size="40px"></nut-icon>
     </view>
   </view>
 </template>

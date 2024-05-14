@@ -19,11 +19,22 @@
       </view>
       <!-- 关注设备信息-饼状图 -->
       <view class="app-main-top">
-        <EChart ref="canvas" />
+        <map
+          id="map"
+          style="width: 100%; height: 300px;"
+          :longitude="nowLocation.longitude"
+          :latitude="nowLocation.latitude"
+          scale="14"
+          :markers="markers"
+          :show-location="true"
+          @regionchange="regionchange"
+          @markertap="markertap"
+        />
       </view>
     </view>
     <view class="app-main">
       <view class="equipment-list">
+        <view class="equipment-title">关注设备</view>
         <view class="equipment-item" v-for="item in 5" :key="item" @tap="toDetail">
           <!-- 常用设备 -->
           <view class="equipment-info">
@@ -41,59 +52,68 @@
 import { ref, onMounted } from "vue";
 import Taro from "@tarojs/taro";
 import { useShareAppMessage, usePageScroll } from '@tarojs/taro'
-import * as echarts from "echarts4taro3/lib/assets/echarts"; // 这里用了内置的，也可以用自定义的 echarts.js
-import { EChart, loadEcharts } from "echarts4taro3";
 import CustomNavBar from '../../components/custom-nav-bar/custom-nav-bar'
 import CustomTabBar from '../../components/custom-tabbar/custom-tabbar'
 import "./index.scss";
-loadEcharts(echarts);
 let showBg = ref(false)
 let showInit = ref(false)
-const canvas = ref(null);
+let nowLocation = ref({})
 const list = ref([
-  'https://yulongge.github.io/images/fushi/banner1.png',
-  'https://yulongge.github.io/images/fushi/banner2.png',
-  'https://yulongge.github.io/images/fushi/banner3.png',
-  'https://yulongge.github.io/images/fushi/banner4.png'
+  'https://yulongge.github.io/images/fushi/banner1.jpeg',
+  'https://yulongge.github.io/images/fushi/banner2.jpeg',
+  'https://yulongge.github.io/images/fushi/banner3.jpeg',
+  'https://yulongge.github.io/images/fushi/banner4.jpeg',
+  'https://yulongge.github.io/images/fushi/banner5.jpeg'
 ])
-const option = {
-  tooltip: {
-    trigger: 'item'
-  },
-  legend: {
-    show: false,
-    top: '5%',
-    left: 'center'
-  },
-  series: [
-    {
-      name: 'Access From',
-      type: 'pie',
-      radius: ['40%', '70%'],
-      center: ['50%', '55%'],
-      // adjust the start and end angle
-      startAngle: 180,
-      endAngle: 360,
-      data: [
-        { value: 1048, name: '流量' },
-        { value: 735, name: '压力' },
-        { value: 580, name: '温度' },
-        { value: 580, name: '腐蚀速率' },
-        { value: 580, name: '介质流速' },
-      ]
-    }
-  ]
-};
 const toDetail = () => {
   Taro.navigateTo({
     url: '/package/product/pages/detail/index'
   })
 }
+const markers = ref([])
+// const polyline = [{
+//   points: [{
+//     longitude: 113.3245211,
+//     latitude: 23.10229
+//   }, {
+//     longitude: 113.324520,
+//     latitude: 23.21229
+//   }],
+//   color:"#FF0000DD",
+//   width: 2,
+//   dottedLine: true
+// }]
+const regionchange = (e) =>  {
+  console.log(e.type)
+}
+const markertap = (e) => {
+  console.log("markertap:", e.detail.markerId)
+}
+const initLocation = () => {
+  Taro.getLocation({
+    type: 'wgs84',
+    success: function (res) {
+      nowLocation.value = {
+        ...res
+      }
+      markers.value.push({
+        iconPath: "https://avatars2.githubusercontent.com/u/1782542?s=460&u=d20514a52100ed1f82282bcfca6f49052793c889&v=4",
+        id: 0,
+        latitude: res.latitude,
+        longitude: res.longitude,
+        width: 50,
+        height: 50
+      })
+      // const latitude = res.latitude
+      // const longitude = res.longitude
+      // const speed = res.speed
+      // const accuracy = res.accuracy
+    }
+  })
+}
+initLocation()
 onMounted(() => {
-  const canvasInstance = canvas.value;
-  Taro.nextTick(() => {
-    canvasInstance.refresh(option);
-  });
+  Taro.nextTick(() => {});
 });
 usePageScroll((payload) => {
   const { scrollTop } = payload

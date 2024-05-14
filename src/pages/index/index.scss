@@ -39,6 +39,7 @@
       border-radius: 20rpx;
       box-shadow: 0 20rpx 20rpx 10rpx rgba(0, 0, 0, 0.2);
       margin-top: 40rpx; 
+      overflow: hidden;
     }
   }
   .app-main {
@@ -55,6 +56,13 @@
     min-height: 100rpx;
     padding: 20rpx;
     box-sizing: border-box;
+    .equipment-title {
+      font-size: 40rpx;
+      font-weight: 500;
+      width: 200rpx;
+      border-bottom:8rpx solid;
+      border-image: linear-gradient(270deg, #FFFFFF 0%, #0AA092 100%) 2 2 2 2;
+    }
     .equipment-item {
       background-color: #fff;
       border-radius: 10rpx;
