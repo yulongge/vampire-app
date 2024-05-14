@@ -4,6 +4,7 @@
   min-height: 100vh;
   overflow-x: hidden;
   background-color: #ffffff;
+  // padding-bottom: 120rpx;
   .no-develop {
     display: block;
     text-align: center;
@@ -44,10 +45,31 @@
   }
   .app-main {
     background-color: #fff;
-    min-height: 80vh;
+    min-height: 320rpx;
     padding: 0px 32rpx;
     box-sizing: border-box;
+    
   }
+  .line-canvas {
+    position: relative;
+    width: 100%;
+    height: 600rpx;
+    padding: 0px 10rpx;
+    box-sizing: border-box;
+    margin-bottom: 160rpx;
+    .equipment-title {
+      position: absolute;
+      left: 40rpx;
+      top: 20rpx;
+      font-size: 40rpx;
+      font-weight: 500;
+      width: 200rpx;
+      border-bottom:8rpx solid;
+      border-image: linear-gradient(270deg, #FFFFFF 0%, #0AA092 100%) 2 2 2 2;
+      // margin-left: 28rpx;
+    }
+  }
+ 
   .equipment-list {
     position: relative;
     margin-top: 280rpx;
