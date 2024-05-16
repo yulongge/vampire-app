@@ -1,0 +1,47 @@
+<template>
+  <view class="product-wrap">
+    <view class="filter">
+      <nut-button type="info">数据分析</nut-button>
+      <nut-button type="info" @tap="addMonitor">添加监测设备</nut-button>
+    </view>
+    <view class="equipment-list">
+      <view class="equipment-item" v-for="item in 20" :key="item" @tap="toDetail">
+        <view class="equipment-info">
+          <text class="name">监测设备{{ item }}</text>
+          <view class="desc">探针位置：xxx   探针剩余厚度：xxx</view>
+          <view class="desc">腐蚀效率：30% 累计腐蚀效率：30%</view>
+        </view>
+        <nut-circleprogress :progress="item * 10" color="#fa2c19" stroke-width="6">
+          <p class="progress-tip">腐蚀度</p>
+          <p class="progress-tip"> {{item * 10}} %</p>
+        </nut-circleprogress>
+      </view>
+    </view>
+    <CustomTabBar />
+  </view>
+</template>
+<script setup>
+import { ref, onMounted, reactive } from "vue";
+import Taro from "@tarojs/taro";
+import { useShareAppMessage } from '@tarojs/taro';
+import CustomTabBar from '../../../../components/custom-tabbar/custom-tabbar'
+import "./index.scss";
+const toDetail = () => {
+  Taro.navigateTo({
+    url: '/package/product/pages/monitorDetail/index'
+  })
+}
+useShareAppMessage((res) => {
+  return {
+    title: '设备列表',
+  }
+})
+const addMonitor = () => {
+  Taro.navigateTo({
+    url: '/package/product/pages/addMonitor/index'
+  })
+}
+onMounted(() => {
+  
+});
+</script>

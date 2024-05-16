@@ -10,6 +10,9 @@ export default {
         "pages/detail/index",
         "pages/options/index",
         "pages/add/index",
+        "pages/monitor/index",
+        "pages/monitorDetail/index",
+        "pages/addMonitor/index",
       ]
     },
     {

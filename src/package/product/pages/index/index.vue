@@ -13,7 +13,7 @@
           <text class="name">设备{{ item }}</text>
           <text class="desc">压力：22，温度：50度,腐蚀效率：30%</text>
         </view>
-        <nut-circleprogress :progress="item * 10" color="#1E90FF"> </nut-circleprogress>
+        <!-- <nut-circleprogress :progress="item * 10" color="#1E90FF"> </nut-circleprogress> -->
       </view>
     </view>
     <CustomTabBar />
