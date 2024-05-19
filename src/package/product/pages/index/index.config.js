@@ -1,5 +1,5 @@
 export default definePageConfig({
-  navigationBarTitleText: '设备列表',
+  navigationBarTitleText: '加注设备',
   navigationStyle: 'default',
   enableShareAppMessage: true
 });
