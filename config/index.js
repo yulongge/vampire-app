@@ -1,3 +1,5 @@
+import { resolve } from 'path'
+
 const config = {
   projectName: 'taro3.5.4',
   date: '2022-8-31',
@@ -26,6 +28,13 @@ const config = {
     prebundle: {
       enable: false
     }
+  },
+  alias: {
+    '@/utils': resolve(__dirname, '..', 'src/utils'),
+    '@/api': resolve(__dirname, '..', 'src/api'),
+    '@/assets': resolve(__dirname, '..', 'src/assets'),
+    // '@/common': resolve(__dirname, '..', 'src/common'),
+    '@/components': resolve(__dirname, '..', 'src/components'),
   },
   cache: {
     enable: false // Webpack 持久化缓存配置，建议开启。默认配置请参考：https://docs.taro.zone/docs/config-detail#cache
