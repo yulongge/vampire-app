@@ -19,6 +19,7 @@ export default {
       "root": "package/mine",
       "pages": [
         "pages/index/index",
+        "pages/login/index",
       ]
     },
   ],

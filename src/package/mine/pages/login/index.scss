@@ -1,0 +1,33 @@
+.login-wrap {
+  padding: 40rpx 32rpx 60rpx 32rpx;
+  .login-tip {
+    .login-tip-title {
+      font-size: 36rpx;
+      font-weight: 500;
+    }
+    .login-tip-desc {
+      margin-top: 10rpx;
+      font-size: 24rpx;
+      font-weight:400;
+      color: #979797;
+    }
+  }
+  .login-main {
+    margin-top: 60rpx;
+    .nut-input {
+      padding-left: 0rpx;
+    }
+    .login-btn {
+      margin-top: 100rpx;
+    }
+  }
+  .other-login {
+    margin-top: 100rpx;
+    text-align: center;
+    .other-icon {
+      width: 100rpx;
+      height: 100rpx;
+      margin-top: 40rpx;
+    }
+  }
+}
