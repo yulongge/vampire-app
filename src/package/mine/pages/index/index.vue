@@ -67,6 +67,8 @@ import { ref, onMounted } from "vue";
 import Taro from "@tarojs/taro";
 import CustomTabBar from '../../../../components/custom-tabbar/custom-tabbar'
 import "./index.scss";
+import { redirect } from '@/utils/redirect';
+import { getStorageSync } from '@/utils/storage'
 let userInfo = ref(null)
 let avatarUrl = ref('')
 let checked = ref(false)
@@ -81,4 +83,13 @@ const toEchart = () => {
     url: '/pages/echart/index',
   })
 }
+onMounted(() => {
+  const userInfo = getStorageSync('userInfo')
+  if (!userInfo?.token) {
+    redirect({
+      type: 'relaunch',
+      url: '/package/mine/pages/login/index'
+    })
+  }
+});
 </script>

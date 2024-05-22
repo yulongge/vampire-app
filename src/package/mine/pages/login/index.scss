@@ -27,7 +27,17 @@
     .other-icon {
       width: 100rpx;
       height: 100rpx;
-      margin-top: 40rpx;
     }
+  }
+  .wechat-btn {
+    background-color: #fff;
+    width: 100rpx;
+    height: 100rpx;
+    padding-left: 0rpx;
+    padding-right: 0rpx;
+    line-height: unset;
+  }
+  .wechat-btn::after {
+    border: none;
   }
 }

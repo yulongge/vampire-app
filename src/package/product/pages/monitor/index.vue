@@ -26,6 +26,8 @@ import Taro from "@tarojs/taro";
 import { useShareAppMessage } from '@tarojs/taro';
 import CustomTabBar from '../../../../components/custom-tabbar/custom-tabbar'
 import "./index.scss";
+import { redirect } from '@/utils/redirect';
+import { getStorageSync } from '@/utils/storage'
 const toDetail = () => {
   Taro.navigateTo({
     url: '/package/product/pages/monitorDetail/index'
@@ -42,6 +44,12 @@ const addMonitor = () => {
   })
 }
 onMounted(() => {
-  
+  const userInfo = getStorageSync('userInfo')
+  if (!userInfo?.token) {
+    redirect({
+      type: 'relaunch',
+      url: '/package/mine/pages/login/index'
+    })
+  }
 });
 </script>

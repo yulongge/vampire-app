@@ -49,6 +49,8 @@ import Taro from "@tarojs/taro";
 import { useShareAppMessage } from '@tarojs/taro';
 import CustomTabBar from '../../../../components/custom-tabbar/custom-tabbar'
 import "./index.scss";
+import { redirect } from '@/utils/redirect';
+import { getStorageSync } from '@/utils/storage'
 const state = reactive({
   options1: [
     { text: '全部设备', value: 0 },
@@ -94,6 +96,12 @@ const changeSwitch = (val, e) => {
   e.stopPropagation()
 }
 onMounted(() => {
-  
+  const userInfo = getStorageSync('userInfo')
+  if (!userInfo?.token) {
+    redirect({
+      type: 'relaunch',
+      url: '/package/mine/pages/login/index'
+    })
+  }
 });
 </script>

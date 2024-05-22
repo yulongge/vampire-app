@@ -1,5 +1,5 @@
 {
-  "name": "Tntelligent System",
+  "name": "intelligentsystem",
   "version": "1.0.0",
   "private": true,
   "description": "智能药剂加注系统，远程操控平台",
@@ -54,7 +54,8 @@
     "@tarojs/taro": "^3.5.6",
     "@tarojs/taro-h5": "^3.5.6",
     "echarts4taro3": "latest",
-    "vue": "^3.0.0"
+    "vue": "^3.0.0",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.8.0",
