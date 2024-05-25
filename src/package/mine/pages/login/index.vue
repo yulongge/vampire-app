@@ -34,13 +34,17 @@
         :error="pwdError"
       />
       <nut-button block type="info" class="login-btn" size="large" @click="toLogin">登录</nut-button>
+      <view class="regest">
+        <a href="#" :style="{ color: '#1989fa' }">修改密码</a>
+        <nut-divider direction="vertical" />
+        <a href="#" :style="{ color: '#1989fa' }" @click="toRegist">注册</a>
+      </view>
     </view>
     <view class="other-login">
       <nut-divider>第三方登录</nut-divider>
       <button open-type="getPhoneNumber" @getphonenumber="getphonenumber" class="wechat-btn">
         <image src="https://yulongge.github.io/images/fushi/wechat.png" class="other-icon"></image>
       </button>
-      
     </view>
   </view>
 </template>
@@ -107,6 +111,12 @@ const getphonenumber = (detail) => {
       type: 'relaunch',
       url: '/pages/index/index'
     })
+  })
+}
+const toRegist = () => {
+  redirect({
+    type: 'navigate',
+    url: '/package/mine/pages/userInfo/index'
   })
 }
 </script>

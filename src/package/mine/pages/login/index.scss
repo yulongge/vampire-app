@@ -40,4 +40,13 @@
   .wechat-btn::after {
     border: none;
   }
+  .regest {
+    text-align: right;
+    display: flex;
+    align-items: center;
+    font-size: 28rpx;
+    justify-content: flex-end;
+    margin-top: 20rpx;
+    padding-right: 20rpx;
+  }
 }

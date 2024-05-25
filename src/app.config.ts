@@ -13,6 +13,7 @@ export default {
         "pages/monitor/index",
         "pages/monitorDetail/index",
         "pages/addMonitor/index",
+        "pages/monitorAnalysic/index",
       ]
     },
     {
@@ -20,6 +21,7 @@ export default {
       "pages": [
         "pages/index/index",
         "pages/login/index",
+        "pages/userInfo/index",
       ]
     },
   ],

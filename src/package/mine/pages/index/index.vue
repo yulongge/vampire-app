@@ -14,19 +14,19 @@
       <view class="profile">苏家坨镇，镇长</view>
     </view>
 
-    <view class="mine-item">
+    <view class="mine-item" @click="toUserInfo">
       <nut-icon name="people"></nut-icon>
-      <view class="item-title">Infomation</view>
+      <view class="item-title">个人信息</view>
+      <nut-icon name="rect-right"></nut-icon>
+    </view>
+    <view class="mine-item">
+      <nut-icon name="setting"></nut-icon>
+      <view class="item-title">部门设置</view>
       <nut-icon name="rect-right"></nut-icon>
     </view>
     <view class="mine-item">
       <nut-icon name="setting"></nut-icon>
       <view class="item-title">Setting</view>
-      <nut-icon name="rect-right"></nut-icon>
-    </view>
-    <view class="mine-item">
-      <nut-icon name="setting"></nut-icon>
-      <view class="item-title">添加设备</view>
       <nut-icon name="rect-right"></nut-icon>
     </view>
     <view class="mine-options">
@@ -81,6 +81,12 @@ const toEchart = () => {
   console.log('comgin...')
   Taro.navigateTo({
     url: '/pages/echart/index',
+  })
+}
+const toUserInfo = () => {
+  redirect({
+    type: 'navigate',
+    url: '/package/mine/pages/userInfo/index'
   })
 }
 onMounted(() => {

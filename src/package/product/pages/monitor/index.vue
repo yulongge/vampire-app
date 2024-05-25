@@ -8,8 +8,8 @@
       <view class="equipment-item" v-for="item in 20" :key="item" @tap="toDetail">
         <view class="equipment-info">
           <text class="name">监测设备{{ item }}</text>
-          <view class="desc">探针位置：xxx   探针剩余厚度：xxx</view>
-          <view class="desc">腐蚀效率：30% 累计腐蚀效率：30%</view>
+          <view class="desc">探针编号：xxx  按照位置：xxx</view>
+          <view class="desc">所属部门：xxx</view>
         </view>
         <nut-circleprogress :progress="item * 10" color="#fa2c19" stroke-width="6">
           <p class="progress-tip">腐蚀度</p>
