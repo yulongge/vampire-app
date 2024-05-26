@@ -26,7 +26,7 @@
     </view>
     <view class="mine-item">
       <nut-icon name="setting"></nut-icon>
-      <view class="item-title">Setting</view>
+      <view class="item-title">用户管理</view>
       <nut-icon name="rect-right"></nut-icon>
     </view>
     <view class="mine-options">

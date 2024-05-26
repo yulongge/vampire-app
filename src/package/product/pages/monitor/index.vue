@@ -1,7 +1,7 @@
 <template>
   <view class="product-wrap">
     <view class="filter">
-      <nut-button type="info">数据分析</nut-button>
+      <nut-button type="info" @tap="toAnalysisData">数据分析</nut-button>
       <nut-button type="info" @tap="addMonitor">添加监测设备</nut-button>
     </view>
     <view class="equipment-list">
@@ -41,6 +41,11 @@ useShareAppMessage((res) => {
 const addMonitor = () => {
   Taro.navigateTo({
     url: '/package/product/pages/addMonitor/index'
+  })
+}
+const toAnalysisData = () => {
+  Taro.navigateTo({
+    url: '/package/product/pages/analysicAll/index'
   })
 }
 onMounted(() => {

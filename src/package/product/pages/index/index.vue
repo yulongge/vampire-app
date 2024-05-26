@@ -31,7 +31,7 @@
         </view> -->
         <ul class="nut-fixednav__list">
             <li class="nut-fixednav__list-item">添加设备</li>
-            <li class="nut-fixednav__list-item">加注模版</li>
+            <li class="nut-fixednav__list-item">加注计划</li>
             <li class="nut-fixednav__list-item">远程操控</li>
         </ul>
       </template>

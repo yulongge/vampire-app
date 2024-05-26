@@ -14,6 +14,7 @@ export default {
         "pages/monitorDetail/index",
         "pages/addMonitor/index",
         "pages/monitorAnalysic/index",
+        "pages/analysicAll/index",
       ]
     },
     {
