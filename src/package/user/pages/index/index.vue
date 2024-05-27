@@ -1,5 +1,10 @@
 <template>
   <view class="user-wrap">
+    <nut-searchbar v-model="keyword">
+      <template v-slot:rightout>
+        搜索
+      </template>
+    </nut-searchbar>
     <div class="user-list">
       <nut-list :height="50" :listData="count" @scroll-bottom="handleScroll">
         <template v-slot="{ item, index }">
@@ -30,6 +35,7 @@ import "./index.scss";
 import { redirect } from '@/utils/redirect';
 import { getStorageSync } from '@/utils/storage'
 let count = ref(new Array(100).fill(0))
+let keyword = ref('')
 const handleScroll = () => {
   let arr = new Array(100).fill(0);
   const len = count.value.length;
