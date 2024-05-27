@@ -23,6 +23,7 @@ export default {
         "pages/index/index",
         "pages/login/index",
         "pages/userInfo/index",
+        "pages/regist/index",
       ]
     },
   ],
