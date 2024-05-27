@@ -1,16 +1,44 @@
-.demo {
-  // height: 100vh;
-  .nut-cell {
-    height: 100%;
-  }
+.user-wrap {
+  
+  box-sizing: border-box;
+  min-height: 100vh;
+  background-color: #ffffff;
+}
+.user-list {
+  padding: 30rpx 0rpx 60rpx 0rpx;
   .nut-list-item {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 50px;
+    min-height: 60rpx;
     margin-bottom: 10px;
-    background-color: #f4a8b6;
     border-radius: 10px;
+  }
+  .list-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    border-radius: 10px;
+    border-bottom: 1rpx solid #efefef;
+    padding: 20rpx 40rpx;
+    .userinfo {
+      flex: 1;
+      padding: 0rpx 20rpx;
+      .username {
+        font-weight: bold;
+        font-size: 28rpx;
+      }
+      .phone-dept, .remark {
+        color: #999;
+        font-weight: 400;
+        font-size: 24rpx;
+        margin-top: 10rpx;
+      }
+    }
+    .option-icon {
+      margin-left: 40rpx;
+    }
   }
 }

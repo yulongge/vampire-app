@@ -1,8 +1,8 @@
 <template>
   <view class="login-wrap">
     <view class="login-tip">
-      <view class="login-tip-title">手机快捷登录</view>
-      <view class="login-tip-desc">未注册过的手机号，将自动创建账号</view>
+      <view class="login-tip-title">账户登录</view>
+      <view class="login-tip-desc">登录后可以查看设备信息，进行设备操控</view>
     </view>
     <view class="login-main">
       <nut-input
@@ -33,18 +33,20 @@
         type="password"
         :error="pwdError"
       />
-      <nut-button block type="info" class="login-btn" size="large" @click="toLogin">登录</nut-button>
       <view class="regest">
-        <a href="#" :style="{ color: '#1989fa' }">修改密码</a>
-        <nut-divider direction="vertical" />
-        <a href="#" :style="{ color: '#1989fa' }" @click="toRegist">注册</a>
+        <a href="#" :style="{ color: '#1989fa' }">忘记密码</a>
+        <!-- <nut-divider direction="vertical" />
+        <a href="#" :style="{ color: '#1989fa' }" @click="toRegist">注册</a> -->
       </view>
+      <nut-button block type="info" class="login-btn" size="large" @click="toLogin">登录</nut-button>
+      
     </view>
     <view class="other-login">
-      <nut-divider>第三方登录</nut-divider>
-      <button open-type="getPhoneNumber" @getphonenumber="getphonenumber" class="wechat-btn">
+      <nut-divider>如果您还没有账户，请注册</nut-divider>
+      <!-- <button open-type="getPhoneNumber" @getphonenumber="getphonenumber" class="wechat-btn">
         <image src="https://yulongge.github.io/images/fushi/wechat.png" class="other-icon"></image>
-      </button>
+      </button> -->
+      <nut-button type="info" @click="toRegist">注册</nut-button>
     </view>
   </view>
 </template>
@@ -116,7 +118,7 @@ const getphonenumber = (detail) => {
 const toRegist = () => {
   redirect({
     type: 'navigate',
-    url: '/package/mine/pages/userInfo/index'
+    url: '/package/mine/pages/regist/index'
   })
 }
 </script>

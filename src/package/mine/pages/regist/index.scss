@@ -1,0 +1,55 @@
+.login-wrap {
+  padding: 40rpx 32rpx 60rpx 32rpx;
+  .login-tip {
+    .login-tip-title {
+      font-size: 36rpx;
+      font-weight: 500;
+    }
+    .login-tip-desc {
+      margin-top: 10rpx;
+      font-size: 24rpx;
+      font-weight:400;
+      color: #979797;
+    }
+  }
+  .login-main {
+    margin-top: 60rpx;
+    .nut-input {
+      padding-left: 0rpx;
+    }
+    .login-btn {
+      margin-top: 40rpx;
+    }
+    .reset-btn {
+      margin-top: 40rpx;
+    }
+  }
+  .other-login {
+    margin-top: 100rpx;
+    text-align: center;
+    .other-icon {
+      width: 100rpx;
+      height: 100rpx;
+    }
+  }
+  .wechat-btn {
+    background-color: #fff;
+    width: 100rpx;
+    height: 100rpx;
+    padding-left: 0rpx;
+    padding-right: 0rpx;
+    line-height: unset;
+  }
+  .wechat-btn::after {
+    border: none;
+  }
+  .regest {
+    text-align: right;
+    display: flex;
+    align-items: center;
+    font-size: 28rpx;
+    justify-content: flex-end;
+    margin-top: 20rpx;
+    padding-right: 20rpx;
+  }
+}
