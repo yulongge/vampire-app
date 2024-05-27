@@ -24,7 +24,7 @@
       <view class="item-title">部门设置</view>
       <nut-icon name="rect-right"></nut-icon>
     </view>
-    <view class="mine-item">
+    <view class="mine-item" @click="toUsePage">
       <nut-icon name="setting"></nut-icon>
       <view class="item-title">用户管理</view>
       <nut-icon name="rect-right"></nut-icon>
@@ -87,6 +87,12 @@ const toUserInfo = () => {
   redirect({
     type: 'navigate',
     url: '/package/mine/pages/userInfo/index'
+  })
+}
+const toUsePage = () => {
+  redirect({
+    type: 'navigate',
+    url: '/package/user/pages/index/index'
   })
 }
 onMounted(() => {

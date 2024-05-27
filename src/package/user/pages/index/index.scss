@@ -1,0 +1,35 @@
+.user-wrap {
+  padding: 30rpx 32rpx 60rpx 32rpx;
+  box-sizing: border-box;
+  min-height: 100vh;
+  background-color: #ffffff;
+}
+.user-list {
+  .nut-list-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 60rpx;
+    margin-bottom: 10px;
+    // background-color: #f4a8b6;
+    border-radius: 10px;
+  }
+  .list-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 60rpx;
+    margin-bottom: 10px;
+    // background-color: #f4a8b6;
+    border-radius: 10px;
+    .userinfo {
+      flex: 1;
+      padding: 0rpx 20rpx;
+    }
+    .option-icon {
+      margin-left: 40rpx;
+    }
+  }
+}

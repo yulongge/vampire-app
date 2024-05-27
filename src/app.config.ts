@@ -26,6 +26,12 @@ export default {
         "pages/regist/index",
       ]
     },
+    {
+      "root": "package/user",
+      "pages": [
+        "pages/index/index",
+      ]
+    },
   ],
   // tabBar: {
   //   color: "#333",
