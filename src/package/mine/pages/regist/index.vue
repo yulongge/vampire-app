@@ -36,7 +36,7 @@
             </nut-radiogroup>
           </nut-form-item>
           <nut-form-item label=" 备注" prop="remark" >
-            <nut-textarea class="nut-input-text"  placeholder="请输入备注" rows="2"/>
+            <nut-textarea v-model="formData.remark" class="nut-input-text"  placeholder="请输入备注" rows="2"/>
           </nut-form-item>
       </nut-form>
       <nut-button block type="info" class="login-btn" size="large" @click="submit">注册</nut-button>
@@ -52,7 +52,9 @@ import regUtil from "@/utils/regexp"
 import { redirect } from '@/utils/redirect';
 import "./index.scss";
 import { Toast } from '@nutui/nutui-taro';
-
+import {
+  addUser
+} from '@/api/user/user.ts'
 const store = useStore()
 const ruleForm = ref<any>(null);
 let formData = ref({
@@ -78,9 +80,17 @@ const customBlurValidate = (prop: string) => {
   });
 };
 const submit = () => {
-  ruleForm.value.validate().then(({ valid, errors }: any) => {
+  ruleForm.value.validate().then(async ({ valid, errors }: any) => {
     if (valid) {
       console.log('success', formData);
+      const params = {
+        ...formData.value,
+        chineseName: formData.value.username,
+        departmentName: '测试部门'
+      }
+      const res = await addUser(params)
+      console.log(res, 'submit add user')
+      Toast.success('注册成功!');
     } else {
       console.log('error submit!!', errors);
     }
