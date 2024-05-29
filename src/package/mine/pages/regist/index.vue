@@ -132,7 +132,7 @@ const rules = {
 const toRegist = () => {
   redirect({
     type: 'navigate',
-    url: '/package/mine/pages/userInfo/index'
+    url: '/package/user/pages/userInfo/index'
   })
 }
 

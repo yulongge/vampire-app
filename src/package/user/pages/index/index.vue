@@ -61,7 +61,7 @@ let pageParam = ref({
 })
 const toUserInfo = (user) => {
   redirect({
-    url: `/package/mine/pages/userInfo/index?userId=${user.id}`
+    url: `/package/user/pages/userInfo/index?userId=${user.id}`
   })
 }
 const getUserList = async () => {

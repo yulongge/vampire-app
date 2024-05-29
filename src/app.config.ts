@@ -22,7 +22,6 @@ export default {
       "pages": [
         "pages/index/index",
         "pages/login/index",
-        "pages/userInfo/index",
         "pages/regist/index",
       ]
     },
@@ -30,6 +29,7 @@ export default {
       "root": "package/user",
       "pages": [
         "pages/index/index",
+        "pages/userInfo/index",
       ]
     },
   ],

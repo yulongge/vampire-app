@@ -86,7 +86,7 @@ const toEchart = () => {
 const toUserInfo = () => {
   redirect({
     type: 'navigate',
-    url: '/package/mine/pages/userInfo/index'
+    url: '/package/user/pages/userInfo/index'
   })
 }
 const toUsePage = () => {
