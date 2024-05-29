@@ -3,9 +3,9 @@
   min-height: 100vh;
   background-color: #ffffff;
   .add-con {
-    width: 30rpx;
-    height: 30rpx;
-    border: 1rpx solid #efefef;
+    width: 32rpx;
+    height: 32rpx;
+    border: 1rpx solid #e0dede;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -49,4 +49,9 @@
       margin-left: 40rpx;
     }
   }
+}
+.bottom-tip {
+  text-align: center;
+  padding: 80rpx;
+  color: #a1a7ae;
 }

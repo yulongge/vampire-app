@@ -90,7 +90,7 @@ const submit = () => {
       }
       const res = await addUser(params)
       console.log(res, 'submit add user')
-      Toast.success('注册成功!');
+      // Toast.success('注册成功!');
     } else {
       console.log('error submit!!', errors);
     }

@@ -28,6 +28,15 @@
         </template>
       </nut-list>
     </div>
+    <p v-if="!pageParam.hasMore" class="bottom-tip"> 到底啦 ~</p>
+    <nut-dialog
+      teleport="#app"
+      title="删除用户提示"
+      content="删除用户，用户将无法登录平台，确定要删除吗？"
+      v-model:visible="delConfirmShow"
+      :onOk="toDel"
+    >
+    </nut-dialog>
   </view>
 </template>
 <script lang="ts" setup>
@@ -39,25 +48,37 @@ import { getStorageSync } from '@/utils/storage'
 import {
   allUsers,
   delUser,
+  getUsers
 } from '@/api/user/user.ts'
-let count = ref(new Array(100).fill(0))
 let userlist = ref([])
 let keyword = ref('')
-const handleScroll = () => {
-  // let arr = new Array(100).fill(0);
-  // const len = count.value.length;
-  // count.value = count.value.concat(arr.map((item: number, index: number) => len + index + 1));
-};
+let delConfirmShow = ref(false)
+let currentUser = ref({})
+let pageParam = ref({
+  pageNo: 0,
+  pageSize: 10,
+  hasMore: true
+})
 const toUserInfo = (user) => {
   redirect({
     url: `/package/mine/pages/userInfo/index?userId=${user.id}`
   })
 }
 const getUserList = async () => {
-  const res = await allUsers({})
+  const res = await getUsers({
+    ...pageParam.value
+  })
   console.log(res, 'res userlist 33')
-  userlist.value = res
+  if (res.length < pageParam.value.pageSize) {
+    pageParam.value.hasMore = false
+  }
+  userlist.value = userlist.value.concat(res)
 }
+const handleScroll = () => {
+  if (!pageParam.value.hasMore) return
+  pageParam.value.pageNo = pageParam.value.pageNo + 1
+  getUserList()
+};
 const toAddUser = () => {
   redirect({
     type: 'navigate',
@@ -65,7 +86,12 @@ const toAddUser = () => {
   })
 }
 const removeUser = async (user) => {
-  await delUser({userId: user.id})
+  delConfirmShow.value = true
+  currentUser.value = user
+}
+const toDel = async () => {
+  console.log('comingl...')
+  await delUser({userId: currentUser.value.id})
   getUserList()
 }
 onMounted(() => {
@@ -77,6 +103,5 @@ onMounted(() => {
     })
   }
   getUserList()
-  count.value = count.value.map((item: number, index: number) => index + 1);
 });
 </script>

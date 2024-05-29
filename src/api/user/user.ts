@@ -16,7 +16,7 @@ export const authLogin = (data: any) => {
 }
 
 /**
- * 获取登录信息
+ * 获取所有用户列表
  * @param data
  * @returns
  */
@@ -28,7 +28,19 @@ export const allUsers = (data: any) => {
     mock: false
   })
 }
-
+/**
+ * 分页所有用户列表
+ * @param data
+ * @returns
+ */
+export const getUsers = (data: any) => {
+  return request({
+    url: `/user/${data.pageNo}/${data.pageSize}`,
+    method: "GET",
+    data: {},
+    mock: false
+  })
+}
 /**
  * 注册
  * @param data
