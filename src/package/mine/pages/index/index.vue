@@ -19,12 +19,12 @@
       <view class="item-title">个人信息</view>
       <nut-icon name="rect-right"></nut-icon>
     </view>
-    <view class="mine-item">
+    <view class="mine-item" @click="toDeptPage">
       <nut-icon name="setting"></nut-icon>
-      <view class="item-title">部门设置</view>
+      <view class="item-title">部门管理</view>
       <nut-icon name="rect-right"></nut-icon>
     </view>
-    <view class="mine-item" @click="toUsePage">
+    <view class="mine-item" @click="toUserPage">
       <nut-icon name="setting"></nut-icon>
       <view class="item-title">用户管理</view>
       <nut-icon name="rect-right"></nut-icon>
@@ -89,10 +89,16 @@ const toUserInfo = () => {
     url: '/package/user/pages/userInfo/index'
   })
 }
-const toUsePage = () => {
+const toUserPage = () => {
   redirect({
     type: 'navigate',
     url: '/package/user/pages/index/index'
+  })
+}
+const toDeptPage = () => {
+  redirect({
+    type: 'navigate',
+    url: '/package/dept/pages/index/index'
   })
 }
 onMounted(() => {

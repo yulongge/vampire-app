@@ -32,6 +32,12 @@ export default {
         "pages/userInfo/index",
       ]
     },
+    {
+      "root": "package/dept",
+      "pages": [
+        "pages/index/index",
+      ]
+    },
   ],
   // tabBar: {
   //   color: "#333",
