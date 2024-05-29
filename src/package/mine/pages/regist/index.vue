@@ -1,6 +1,6 @@
 <template>
   <view class="login-wrap">
-    <view class="login-tip">
+    <view class="login-tip" v-if="pageType == 1">
       <view class="login-tip-title">账户注册</view>
       <view class="login-tip-desc">注册登录后可以查看设备信息，进行设备操控</view>
     </view>
@@ -30,16 +30,16 @@
           </nut-form-item>
           <nut-form-item label="角色" required>
             <nut-radiogroup direction="horizontal" v-model="formData.permission">
-                <nut-radio :label="1">普通员工</nut-radio>
-                <nut-radio :label="2">部门经理</nut-radio>
-                <nut-radio :label="3">管理员</nut-radio>
+              <nut-radio :label="1">浏览</nut-radio>
+              <nut-radio :label="2">操作</nut-radio>
+              <nut-radio :label="3">系统管理员</nut-radio>
             </nut-radiogroup>
           </nut-form-item>
           <nut-form-item label=" 备注" prop="remark" >
             <nut-textarea v-model="formData.remark" class="nut-input-text"  placeholder="请输入备注" rows="2"/>
           </nut-form-item>
       </nut-form>
-      <nut-button block type="info" class="login-btn" size="large" @click="submit">注册</nut-button>
+      <nut-button block type="info" class="login-btn" size="large" @click="submit">{{ pageType == 1 ? '注册' : '添加' }}</nut-button>
       <nut-button block type="default" class="login-btn reset-btn" size="large" @click="reset">重置</nut-button>
     </view>
   </view>
@@ -55,6 +55,8 @@ import { Toast } from '@nutui/nutui-taro';
 import {
   addUser
 } from '@/api/user/user.ts'
+import { getCurrentInstance } from '@tarojs/taro';
+let pageType = ref(1) // 1: 注册, 2: 添加用户
 const store = useStore()
 const ruleForm = ref<any>(null);
 let formData = ref({
@@ -132,5 +134,14 @@ const toRegist = () => {
     type: 'navigate',
     url: '/package/mine/pages/userInfo/index'
   })
+}
+
+const params = getCurrentInstance().router.params
+const { type } = params
+if (type == 'add') {
+  Taro.setNavigationBarTitle({
+    title: '添加用户'
+  })
+  pageType.value = 2
 }
 </script>

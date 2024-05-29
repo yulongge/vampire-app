@@ -82,3 +82,17 @@ export const delUser = (data: any) => {
     mock: false
   })
 }
+
+/**
+ * 修改用户
+ * @param data
+ * @returns
+ */
+export const updateUser = (data: any) => {
+  return request({
+    url: `/user`,
+    method: "put",
+    data,
+    mock: false
+  })
+}

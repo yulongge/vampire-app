@@ -82,7 +82,7 @@ const handleScroll = () => {
 const toAddUser = () => {
   redirect({
     type: 'navigate',
-    url: '/package/mine/pages/regist/index'
+    url: '/package/mine/pages/regist/index?type=add'
   })
 }
 const removeUser = async (user) => {
@@ -90,7 +90,6 @@ const removeUser = async (user) => {
   currentUser.value = user
 }
 const toDel = async () => {
-  console.log('comingl...')
   await delUser({userId: currentUser.value.id})
   getUserList()
 }

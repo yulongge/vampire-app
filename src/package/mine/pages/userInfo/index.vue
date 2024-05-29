@@ -16,9 +16,9 @@
       <nut-form-item label="权限" prop="quanxian" >
         <!-- <input class="nut-input-text" placeholder="请输入权限" type="text" /> -->
         <nut-radiogroup direction="horizontal" class="nut-input-text" v-model="userForm.permission">
-          <nut-radio label="1">选项1</nut-radio>
-          <nut-radio label="2">选项2</nut-radio>
-          <nut-radio label="3">选项3</nut-radio>
+          <nut-radio label="1">浏览</nut-radio>
+          <nut-radio label="2">操作</nut-radio>
+          <nut-radio label="3">系统管理员</nut-radio>
         </nut-radiogroup>
       </nut-form-item>
       <nut-form-item label="所属部门" prop="bumen" >
@@ -30,7 +30,7 @@
     </nut-form>
     <nut-cell>
       <!-- <nut-button size="small" style="margin-right: 10px">修改</nut-button> -->
-      <nut-button block type="info">修改</nut-button>
+      <nut-button block type="info" @click="updateInfo">修改</nut-button>
     </nut-cell>
   </view>
 </template>
@@ -40,7 +40,8 @@ import Taro from "@tarojs/taro";
 import { useShareAppMessage, getCurrentInstance } from '@tarojs/taro';
 import "./index.scss";
 import {
-  getUserInfo
+  getUserInfo,
+  updateUser,
 } from '@/api/user/user.ts'
 const userFormRef = ref<any>(null);
 let userForm = ref({
@@ -60,8 +61,13 @@ const rules = {
 }
 const getInfo = async (userId) => {
   const res = await getUserInfo({userId})
-  console.log(res, 'userInfo')
   userForm.value = res
+}
+const updateInfo = async () => {
+  const res = await updateUser({
+    ...userForm.value
+  })
+  console.log(res, 'updateInfo')
 }
 onMounted(() => {
   const params = getCurrentInstance().router.params
