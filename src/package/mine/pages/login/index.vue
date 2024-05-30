@@ -6,9 +6,9 @@
     </view>
     <view class="login-main">
       <nut-input
-        label="手机号" 
+        label="用户名" 
         :placeholder="telPlaceholder" 
-        v-model="tel" 
+        v-model="username" 
         type="tel" 
         class="login-input"
         :error="telError"
@@ -56,24 +56,21 @@ import { useStore } from 'vuex'
 import Taro from "@tarojs/taro";
 import regUtil from "@/utils/regexp"
 import { redirect } from '@/utils/redirect';
+import {
+  login
+} from '@/api/user/user.ts'
 import "./index.scss";
 const store = useStore()
-let tel = ref('')
-// let smsCode = ref('')
+let username = ref('')
 let password = ref('')
-let telPlaceholder = ref('请输入手机号')
+let telPlaceholder = ref('请输入用户名/手机号')
 let telErrorTip = ref('')
 let telError = ref(false)
 let codeError = ref(false)
 let pwdError = ref(false)
-const toLogin = () => {
-  if (!tel.value) {
+const toLogin = async () => {
+  if (!username.value) {
     telError.value = true
-    return
-  }
-  if (!regUtil.telReg.test(tel.value)) {
-    telError.value = true
-    telErrorTip.value = '请输入正确手机号'
     return
   }
   if (!password.value) {
@@ -82,15 +79,28 @@ const toLogin = () => {
   }
   telError.value = false
   codeError.value = false
-  store.dispatch('global/initConfig', {
-    tel: tel.value,
+  const res = await login({
+    username: username.value,
     password: password.value
-  }).then(res => {
-    redirect({
-      type: 'relaunch',
-      url: '/pages/index/index'
-    })
   })
+  console.log(res, 'login')
+  if (!res) {
+    Taro.showToast({
+      title: '登录失败，请检查用户名和密码',
+      icon: 'none',
+      duration: 2000
+    })
+  } else {
+    store.dispatch('global/initConfig', {
+      ...res
+    }).then(res => {
+      redirect({
+        type: 'relaunch',
+        url: '/pages/index/index'
+      })
+    })
+  }
+  
 }
 const sendCode = () => {
   if (!tel.value) {

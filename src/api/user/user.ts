@@ -1,14 +1,13 @@
 import { request } from "@/utils/request"
 
 /**
- * 获取登录信息
+ * 登录信息
  * @param data
  * @returns
  */
-export const authLogin = (data: any) => {
+export const login = (data: any) => {
   return request({
-    // url: `/as-user/api/v1/auth/wxapp-login`,
-    url: `/fillsystem/login`,
+    url: `/user/login`,
     method: "POST",
     data,
     mock: false

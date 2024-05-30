@@ -1,19 +1,13 @@
 <template>
   <view class="mine-wrap">
     <view class="info-card">
-      <!-- <button v-if="!avatarUrl" open-type="chooseAvatar" @chooseavatar="getUserInfo" class="avatar">授权</button>
-      <view v-else>
-        <image :src="avatarUrl" class="avatar"></image>
-        <input type="nickname" placeholder="请输入昵称"/>
-      </view> -->
       <nut-avatar
         size="100"
         icon="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png">
       </nut-avatar>
-      <view class="nickname">GYL</view>
-      <view class="profile">苏家坨镇，镇长</view>
+      <view class="nickname">{{userInfo.username}}</view>
+      <view class="profile">{{userInfo.remark}}</view>
     </view>
-
     <view class="mine-item" @click="toUserInfo">
       <nut-icon name="people"></nut-icon>
       <view class="item-title">个人信息</view>
@@ -42,24 +36,7 @@
         <nut-switch v-model="checked" />
       </view>
     </view>
-
-    
-    <!-- <view class="info-msg">
-      <view class="info-item">
-        <text class="info-item-label">所属公司:</text>
-        <text class="info-item-val">劳改所</text>
-      </view>
-      <view class="info-item">
-        <text class="info-item-label">公司职位:</text>
-        <text class="info-item-val">总经理</text>
-      </view>
-      <view class="info-item">
-        <text class="info-item-label">地址:</text>
-        <text class="info-item-val">苏家坨什么鬼地方</text>
-      </view>
-    </view> -->
     <CustomTabBar />
-    <!-- <button class="echart-btn" @tap="toEchart">图形分析</button> -->
   </view>
 </template>
 <script setup>
@@ -69,7 +46,8 @@ import CustomTabBar from '../../../../components/custom-tabbar/custom-tabbar'
 import "./index.scss";
 import { redirect } from '@/utils/redirect';
 import { getStorageSync } from '@/utils/storage'
-let userInfo = ref(null)
+import { useStore } from 'vuex'
+const store = useStore()
 let avatarUrl = ref('')
 let checked = ref(false)
 const getUserInfo = (e) => {
@@ -101,9 +79,10 @@ const toDeptPage = () => {
     url: '/package/dept/pages/index/index'
   })
 }
+let userInfo = ref({})
 onMounted(() => {
-  const userInfo = getStorageSync('userInfo')
-  if (!userInfo?.token) {
+  userInfo.value = getStorageSync('userInfo') || {}
+  if (!userInfo.value?.token) {
     redirect({
       type: 'relaunch',
       url: '/package/mine/pages/login/index'
