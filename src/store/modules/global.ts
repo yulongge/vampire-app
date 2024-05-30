@@ -7,7 +7,7 @@ const state = {
 
 const mutations = {
   initConfig(state, data) {
-    state.userInfo = Object.assign({}, data, { token: 'testToken'})
+    state.userInfo = Object.assign({}, data)
     setStorageSync('userInfo', state.userInfo)
   },
 }
@@ -20,6 +20,9 @@ const actions = {
     // }
     context.commit('initConfig', data)
   },
+  async logout(context, data = {}) {
+    context.commit('initConfig', {})
+  }
 }
 
 export default {

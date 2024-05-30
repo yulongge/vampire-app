@@ -50,7 +50,7 @@ const toAnalysisData = () => {
 }
 onMounted(() => {
   const userInfo = getStorageSync('userInfo')
-  if (!userInfo?.token) {
+  if (!userInfo?.id) {
     redirect({
       type: 'relaunch',
       url: '/package/mine/pages/login/index'

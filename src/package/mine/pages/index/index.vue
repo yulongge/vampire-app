@@ -36,6 +36,10 @@
         <nut-switch v-model="checked" />
       </view>
     </view>
+    <view class="mine-item" @click="logout">
+      <nut-icon name="failure"></nut-icon>
+      <view class="item-title">退出登录</view>
+    </view>
     <CustomTabBar />
   </view>
 </template>
@@ -47,6 +51,7 @@ import "./index.scss";
 import { redirect } from '@/utils/redirect';
 import { getStorageSync } from '@/utils/storage'
 import { useStore } from 'vuex'
+let userInfo = ref({})
 const store = useStore()
 let avatarUrl = ref('')
 let checked = ref(false)
@@ -64,7 +69,7 @@ const toEchart = () => {
 const toUserInfo = () => {
   redirect({
     type: 'navigate',
-    url: '/package/user/pages/userInfo/index'
+    url: `/package/user/pages/userInfo/index?userId=${userInfo.value.id}`
   })
 }
 const toUserPage = () => {
@@ -79,10 +84,18 @@ const toDeptPage = () => {
     url: '/package/dept/pages/index/index'
   })
 }
-let userInfo = ref({})
+const logout = () => {
+  store.dispatch('global/logout', {})
+  .then(res => {
+    redirect({
+      type: 'relaunch',
+      url: '/pages/index/index'
+    })
+  })
+}
 onMounted(() => {
   userInfo.value = getStorageSync('userInfo') || {}
-  if (!userInfo.value?.token) {
+  if (!userInfo.value?.id) {
     redirect({
       type: 'relaunch',
       url: '/package/mine/pages/login/index'
