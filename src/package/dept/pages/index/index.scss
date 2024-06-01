@@ -1,57 +1,48 @@
-.user-wrap {
+.dept-wrap {
   box-sizing: border-box;
   min-height: 100vh;
   background-color: #ffffff;
-  .add-con {
-    width: 32rpx;
-    height: 32rpx;
-    border: 1rpx solid #e0dede;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    margin-left: 10rpx;
-  }
-}
-.user-list {
-  padding: 30rpx 0rpx 60rpx 0rpx;
-  .nut-list-item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    min-height: 60rpx;
-    margin-bottom: 10px;
-    border-radius: 10px;
-  }
-  .list-item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    border-radius: 10px;
-    border-bottom: 1rpx solid #efefef;
-    padding: 20rpx 40rpx;
-    .userinfo {
-      flex: 1;
-      padding: 0rpx 20rpx;
-      .username {
-        font-weight: bold;
-        font-size: 28rpx;
+  .dept-content {
+    padding: 40rpx;
+    .dept-item {
+      margin-bottom: 10rpx;
+      .dept-name {
+        display: flex;
+        align-items: center;
+        // background-color: #efefef;
+        border-bottom: 1rpx solid #efefef;
+        padding: 20rpx 20rpx;
+        .dept-name-value {
+          margin-left: 10rpx;
+        }
+        
       }
-      .phone-dept, .remark {
-        color: #999;
-        font-weight: 400;
-        font-size: 24rpx;
+      .dept-sub-list {
         margin-top: 10rpx;
+        // background-color: #efefef;
+        .dept-sub-item {
+          padding: 0rpx 0rpx 0rpx 46rpx;
+          box-sizing: border-box;
+          margin-bottom: 10rpx;
+          .dept-sub-name {
+            display: flex;
+            align-items: center;
+            // background-color: #efefef;
+            border-bottom: 1rpx solid #efefef;
+            padding: 10rpx 20rpx;
+          }
+        }
+      }
+      .options {
+        flex: 1;
+        text-align: right;
+        .nut-icon {
+          margin-left: 20rpx;
+        }
       }
     }
-    .option-icon {
-      margin-left: 40rpx;
-    }
   }
-}
-.bottom-tip {
-  text-align: center;
-  padding: 80rpx;
-  color: #a1a7ae;
+  .add-btn {
+    margin-top: 40rpx;
+  }
 }

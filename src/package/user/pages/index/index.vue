@@ -2,7 +2,7 @@
   <view class="user-wrap">
     <nut-searchbar v-model="keyword">
       <template v-slot:rightout>
-        <span>搜索</span>
+        <span @click="toSearchUser">搜索</span>
         <span class="add-con" @click="toAddUser"><nut-icon name="plus" ></nut-icon></span>
       </template>
     </nut-searchbar>
@@ -46,9 +46,9 @@ import "./index.scss";
 import { redirect } from '@/utils/redirect';
 import { getStorageSync } from '@/utils/storage'
 import {
-  allUsers,
   delUser,
-  getUsers
+  getUsers,
+  searchUsers,
 } from '@/api/user/user.ts'
 let userlist = ref([])
 let keyword = ref('')
@@ -75,6 +75,7 @@ const getUserList = async () => {
   userlist.value = userlist.value.concat(res)
 }
 const handleScroll = () => {
+  if (keyword.value) return
   if (!pageParam.value.hasMore) return
   pageParam.value.pageNo = pageParam.value.pageNo + 1
   getUserList()
@@ -92,6 +93,13 @@ const removeUser = async (user) => {
 const toDel = async () => {
   await delUser({userId: currentUser.value.id})
   getUserList()
+}
+const toSearchUser = async () => {
+  const res = await searchUsers({
+    keyword: keyword.value
+  })
+  console.log(res, 'res')
+  userlist.value = res
 }
 onMounted(() => {
   const userInfo = getStorageSync('userInfo')

@@ -95,3 +95,17 @@ export const updateUser = (data: any) => {
     mock: false
   })
 }
+
+/**
+ * 修改用户
+ * @param data
+ * @returns
+ */
+export const searchUsers = (data: any) => {
+  return request({
+    url: `/user/fuzzy`,
+    method: "get",
+    data,
+    mock: false
+  })
+}

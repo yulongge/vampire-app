@@ -14,7 +14,12 @@ export const request = ({
   },
   mock = false,
 }) => {
-  let params = Object.assign({}, {...data})
+  let params = {}
+  if (Array.isArray(data)) {
+    params = Object.assign([], data)
+  } else {
+    params = Object.assign({}, {...data})
+  }
   url = `${host}${url}`
   let newHeader = Object.assign({}, headers)
   return Taro.request({

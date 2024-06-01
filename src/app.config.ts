@@ -36,6 +36,7 @@ export default {
       "root": "package/dept",
       "pages": [
         "pages/index/index",
+        "pages/addDept/index",
       ]
     },
   ],

@@ -1,0 +1,21 @@
+.add-dept-wrap {
+  padding: 40rpx 32rpx 60rpx 32rpx;
+  .login-main {
+    margin-top: 60rpx;
+    .nut-input {
+      padding-left: 0rpx;
+    }
+    .option-btns {
+      width: 100%;
+      text-align: center;
+    }
+    .login-btn {
+      margin-top: 40rpx;
+      width: 200rpx;
+      margin-left: 40rpx;
+    }
+    .reset-btn {
+      margin-top: 40rpx;
+    }
+  }
+}
