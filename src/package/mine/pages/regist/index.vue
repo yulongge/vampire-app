@@ -23,10 +23,18 @@
             <input class="nut-input-text" v-model="formData.password" placeholder="请输入密码" type="text" />
           </nut-form-item>
           <nut-form-item label="部门" prop="departmentId" required>
-            <input class="nut-input-text"
+            <!-- <input class="nut-input-text"
               v-model="formData.departmentId"
               placeholder="请输入部门"
-              type="text" />
+              type="text" /> -->
+              <!-- <nut-picker
+                v-model:visible="show"
+                v-model="selectedCascader"
+                :columns="cascaderColumns"
+                title="城市选择"
+                @confirm="confirm"
+                @change="change"
+              ></nut-picker> -->
           </nut-form-item>
           <nut-form-item label="角色" required>
             <nut-radiogroup direction="horizontal" v-model="formData.permission">
@@ -129,13 +137,6 @@ const rules = {
     { required: true, message: '请选择部门' }
   ]
 }
-const toRegist = () => {
-  redirect({
-    type: 'navigate',
-    url: '/package/user/pages/userInfo/index'
-  })
-}
-
 const params = getCurrentInstance().router.params
 const { type } = params
 if (type == 'add') {

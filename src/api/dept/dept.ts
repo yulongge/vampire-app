@@ -41,3 +41,44 @@ export const delDept = (data: any) => {
     mock: false
   })
 }
+
+/**
+ * 获取部门信息
+ * @param data
+ * @returns
+ */
+export const getDeptInfo = (data: any) => {
+  return request({
+    url: `/dep/${data.id}`,
+    method: "get",
+    mock: false
+  })
+}
+
+/**
+ * 修改部门信息
+ * @param data
+ * @returns
+ */
+export const updateDept = (data: any) => {
+  return request({
+    url: `/dep`,
+    method: "put",
+    data,
+    mock: false
+  })
+}
+
+/**
+ * 模糊搜索部门列表
+ * @param data
+ * @returns
+ */
+export const searchDepts = (data: any) => {
+  return request({
+    url: `/dep/fuzzy`,
+    method: "get",
+    data,
+    mock: false
+  })
+}

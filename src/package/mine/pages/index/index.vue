@@ -25,7 +25,7 @@
     </view>
     <view class="mine-options">
       <view class="mine-options-title">通用</view>
-      <view class="mine-options-item">
+      <!-- <view class="mine-options-item">
         <nut-icon name="service"></nut-icon>
         <view class="item-title">Customer</view>
         <nut-switch v-model="checked" />
@@ -34,7 +34,7 @@
         <nut-icon name="service"></nut-icon>
         <view class="item-title">Theme</view>
         <nut-switch v-model="checked" />
-      </view>
+      </view> -->
     </view>
     <view class="mine-item" @click="logout">
       <nut-icon name="failure"></nut-icon>

@@ -1,5 +1,11 @@
 <template>
   <view class="dept-wrap">
+    <nut-searchbar v-model="keyword" @clear="clearSearch">
+      <template v-slot:rightout>
+        <span @click="toSearchDept">搜索</span>
+        <!-- <span class="add-con" @click="toAddUser"><nut-icon name="plus" ></nut-icon></span> -->
+      </template>
+    </nut-searchbar>
     <div class="dept-content">
       <div class="dept-list" v-if="deptlist.length">
         <div v-for="item in deptlist" :key="item.id" class="dept-item">
@@ -28,7 +34,7 @@
         </div>
       </div>
       <nut-empty image="empty" description="暂无部门数据" v-else></nut-empty>
-      <nut-button type="info" block @click="addDept" class="add-btn">添加部门</nut-button>
+      <nut-button type="info" block @click="addDept" class="add-btn" v-if="!isSearching">添加部门</nut-button>
     </div>
     <nut-dialog
       teleport="#app"
@@ -51,19 +57,23 @@ import { redirect } from '@/utils/redirect';
 import { getStorageSync } from '@/utils/storage'
 import {
   allDept,
-  delDept
+  delDept,
+  searchDepts,
 } from '@/api/dept/dept.ts'
 let deptlist = ref([])
-let showNav = ref(true)
 let delConfirmShow = ref(false)
 let currentDept = ref({})
-const computeDepts = (data) => {
+let keyword = ref('')
+let isSearching = ref(false)
+const computeDepts = (data, type = '') => {
   let tempData = Object.assign([], data)
-  tempData = tempData.filter(item => !item.superiorsId).map(item => {
-    const children = data.filter(tempItem => tempItem.superiorsId == item.id)
-    item.children = children.length ? children : null
-    return item
-  })
+  if (!type) {
+    tempData = tempData.filter(item => !item.superiorsId).map(item => {
+      const children = data.filter(tempItem => tempItem.superiorsId == item.id)
+      item.children = children.length ? children : null
+      return item
+    })
+  }
   deptlist.value = tempData
 }
 const getDept = async () => {
@@ -85,11 +95,22 @@ const addDept = (item) => {
     url: `/package/dept/pages/addDept/index?superiorsId=${item.id}&superiorsName=${item.departmentName}`
   })
 }
-const editDept = () => {
-  Taro.showToast({
-    title: '待开发',
-    icon: "none"
+const editDept = (item) => {
+  redirect({
+    type: 'navigate',
+    url: `/package/dept/pages/addDept/index?id=${item.id}`
   })
+}
+const clearSearch = () => {
+  isSearching.value = false
+  getDept()
+}
+const toSearchDept = async () => {
+  const res = await searchDepts({
+    keyword: keyword.value
+  })
+  isSearching.value = true
+  computeDepts(res, 'notree')
 }
 useDidShow(() => {
   getDept()
