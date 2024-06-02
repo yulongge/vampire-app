@@ -47,7 +47,7 @@
   </view>
 </template>
 <script lang="ts" setup>
-import { ref, onMounted, reactive } from "vue";
+import { ref, onMounted, } from "vue";
 import Taro from "@tarojs/taro";
 import {
   useDidShow

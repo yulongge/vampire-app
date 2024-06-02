@@ -14,22 +14,28 @@
         <input class="nut-input-text" placeholder="请输入电话" type="text" v-model="userForm.phoneNum" :disabled="userForm.id != memberId"/>
       </nut-form-item>
       <nut-form-item label="权限" prop="quanxian" >
-        <!-- <input class="nut-input-text" placeholder="请输入权限" type="text" /> -->
         <nut-radiogroup direction="horizontal" class="nut-input-text" v-model="userForm.permission">
           <nut-radio label="1" :disabled="userForm.id != memberId">浏览</nut-radio>
           <nut-radio label="2" :disabled="userForm.id != memberId">操作</nut-radio>
           <nut-radio label="3" :disabled="userForm.id != memberId">系统管理员</nut-radio>
         </nut-radiogroup>
       </nut-form-item>
-      <nut-form-item label="所属部门" prop="bumen" >
-        <input class="nut-input-text" placeholder="请输入编号" type="text" v-model="userForm.departmentId" :disabled="userForm.id != memberId"/>
+      <nut-form-item label="所属部门" prop="departmentId" >
+        <input class="nut-input-text" placeholder="请选择门店" type="text" v-model="userForm.departmentId" :disabled="userForm.id != memberId" @click="showPickerDept"/>
+        <nut-picker
+          v-model="selectedValue"
+          v-model:visible="showDept"
+          :columns="columns"
+          title="部门选择"
+          @confirm="confirm"
+        >
+  </nut-picker>
       </nut-form-item>
       <nut-form-item label="备注" prop="beizhu" >
         <nut-textarea class="nut-input-text"  placeholder="请输入备注" type="text" v-model="userForm.remark" :disabled="userForm.id != memberId"/>
       </nut-form-item>
     </nut-form>
     <nut-cell v-if="userForm.id == memberId">
-      <!-- <nut-button size="small" style="margin-right: 10px">修改</nut-button> -->
       <nut-button block type="info" @click="updateInfo">修改</nut-button>
     </nut-cell>
   </view>
@@ -44,8 +50,12 @@ import {
   updateUser,
 } from '@/api/user/user.ts'
 import { getStorageSync } from '@/utils/storage'
+import {
+  allDept,
+} from '@/api/dept/dept.ts'
 let memberId = ref('')
 const userFormRef = ref<any>(null);
+let showDept = ref(false)
 let userForm = ref({
   username: '',
   password: '',
@@ -69,8 +79,30 @@ const updateInfo = async () => {
   const res = await updateUser({
     ...userForm.value
   })
-  console.log(res, 'updateInfo')
 }
+const selectedValue = ref([]);
+const columns = ref([]);
+const getDept = async () => {
+  const res = await allDept({})
+  columns.value = res.map(item => {
+    let tempItem = {
+      text: item.departmentName,
+      value: item.id
+    }
+    return tempItem
+  })
+}
+const showPickerDept = () => {
+  getDept()
+  selectedValue.value = [userForm.value.departmentId]
+  showDept.value = true
+}
+const confirm = ( { selectedValue,selectedOptions })=>{
+  // desc.value = selectedValue.join(',');
+}
+const change = ({ selectedValue,selectedOptions }) => {
+  console.log(selectedValue);
+};
 onMounted(() => {
   const params = getCurrentInstance().router.params
   const { userId } = params
