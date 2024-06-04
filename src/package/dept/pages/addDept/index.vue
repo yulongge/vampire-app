@@ -138,7 +138,7 @@ const getDeptDetail = async (id) => {
   formData.value = res
   if (res.superiorsId) {
     const superiorsDept = await getDeptInfo({id: res.superiorsId})
-    superiorsDeptName.value = superiorsDept.departmentName
+    superiorsDeptName.value = superiorsDept.departmentName || ''
   }
 }
 const params = getCurrentInstance().router.params
@@ -148,7 +148,7 @@ if (superiorsId) {
     title: '添加子部门'
   })
   formData.value.superiorsId = superiorsId
-  superiorsDeptName.value = superiorsName
+  superiorsDeptName.value = superiorsName || ''
 }
 if (id) {
   Taro.setNavigationBarTitle({

@@ -90,10 +90,17 @@ const toDel = async () => {
   getDept()
 }
 const addDept = (item) => {
-  redirect({
-    type: 'navigate',
-    url: `/package/dept/pages/addDept/index?superiorsId=${item.id}&superiorsName=${item.departmentName}`
-  })
+  if (item.id) {
+    redirect({
+      type: 'navigate',
+      url: `/package/dept/pages/addDept/index?superiorsId=${item.id}&superiorsName=${item.departmentName}`
+    })
+  } else {
+    redirect({
+      type: 'navigate',
+      url: `/package/dept/pages/addDept/index`
+    })
+  }
 }
 const editDept = (item) => {
   redirect({

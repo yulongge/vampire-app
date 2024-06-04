@@ -23,18 +23,15 @@
             <input class="nut-input-text" v-model="formData.password" placeholder="请输入密码" type="text" />
           </nut-form-item>
           <nut-form-item label="部门" prop="departmentId" required>
-            <!-- <input class="nut-input-text"
-              v-model="formData.departmentId"
-              placeholder="请输入部门"
-              type="text" /> -->
-              <!-- <nut-picker
-                v-model:visible="show"
-                v-model="selectedCascader"
-                :columns="cascaderColumns"
-                title="城市选择"
-                @confirm="confirm"
-                @change="change"
-              ></nut-picker> -->
+            <input class="nut-input-text" placeholder="请选择门店" type="text" v-model="formData.departmentName"  @click="showPickerDept"/>
+            <nut-picker
+              v-model="selectedValue"
+              v-model:visible="showDept"
+              :columns="columns"
+              title="部门选择"
+              @confirm="confirm"
+            >
+            </nut-picker>
           </nut-form-item>
           <nut-form-item label="角色" required>
             <nut-radiogroup direction="horizontal" v-model="formData.permission">
@@ -64,6 +61,9 @@ import {
   addUser
 } from '@/api/user/user.ts'
 import { getCurrentInstance } from '@tarojs/taro';
+import {
+  allDept,
+} from '@/api/dept/dept.ts'
 let pageType = ref(1) // 1: 注册, 2: 添加用户
 const store = useStore()
 const ruleForm = ref<any>(null);
@@ -139,6 +139,28 @@ const rules = {
 }
 const params = getCurrentInstance().router.params
 const { type } = params
+let showDept = ref(false)
+const selectedValue = ref([]);
+const columns = ref([]);
+const getDept = async () => {
+  const res = await allDept({})
+  columns.value = res.map(item => {
+    let tempItem = {
+      text: item.departmentName,
+      value: item.id
+    }
+    return tempItem
+  })
+}
+const showPickerDept = () => {
+  getDept()
+  // selectedValue.value = [formData.value.departmentId]
+  showDept.value = true
+}
+const confirm = ( { selectedValue,selectedOptions })=>{
+  formData.value.departmentName = selectedOptions[0].text
+  formData.value.departmentId = selectedOptions[0].value
+}
 if (type == 'add') {
   Taro.setNavigationBarTitle({
     title: '添加用户'
