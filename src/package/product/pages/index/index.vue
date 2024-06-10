@@ -30,9 +30,9 @@
           <view class="option-item">远程操控</view>
         </view> -->
         <ul class="nut-fixednav__list">
-            <li class="nut-fixednav__list-item">添加设备</li>
-            <li class="nut-fixednav__list-item">加注计划</li>
-            <li class="nut-fixednav__list-item">远程操控</li>
+            <li class="nut-fixednav__list-item" @tap="addProduct">添加设备</li>
+            <li class="nut-fixednav__list-item" @tap="addPlanTemp">加注计划</li>
+            <!-- <li class="nut-fixednav__list-item">远程操控</li> -->
         </ul>
       </template>
       <template v-slot:btn>
@@ -90,6 +90,11 @@ useShareAppMessage((res) => {
 const addProduct = () => {
   Taro.navigateTo({
     url: '/package/product/pages/add/index'
+  })
+}
+const addPlanTemp = () => {
+  Taro.navigateTo({
+    url: '/package/product/pages/planTemp/index'
   })
 }
 const changeSwitch = (val, e) => {

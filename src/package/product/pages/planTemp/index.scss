@@ -1,0 +1,31 @@
+.plan-wrap {
+  padding: 30rpx 32rpx 180rpx 32rpx;
+  box-sizing: border-box;
+  min-height: 100vh;
+  background-color: #ffffff;
+  .plan-list {
+    .plan-item {
+      padding: 20rpx 10rpx;
+      border-bottom: 1rpx solid #efefef;
+      display: flex;
+      align-items: center;
+      .item-lf {
+        flex: 1;
+      }
+      .item-title {
+        font-size: 32rpx;
+      }
+      .item-info {
+        margin-top: 10rpx;
+        font-size: 20rpx;
+        color: #678;
+        margin-top: 30rpx;
+      }
+      .option {
+        .option-icon {
+          margin-left: 40rpx;
+        }
+      }
+    }
+  }
+}
