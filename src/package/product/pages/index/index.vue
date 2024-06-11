@@ -8,31 +8,23 @@
       </nut-menu>
     </view>
     <view class="equipment-list">
-      <view class="equipment-item" v-for="item in 20" :key="item" @tap="toDetail">
+      <view class="equipment-item" v-for="item in list" :key="item.id" @tap="toDetail">
         <view class="equipment-info">
-          <text class="name">加注设备{{ item }}</text>
-          <text class="desc">压力：22， 温度：50度， 腐蚀效率：30%</text>
+          <text class="name">加注设备{{ item.id }}</text>
+          <text class="desc">状态：{{ item.checked ? '已开启' : '已关闭'}} 药剂：防腐剂, 药剂剩余量：30%</text>
         </view>
-        <nut-switch v-model="checked" active-text="开" inactive-text="关" v-if="item > 3" size="40px" @change="changeSwitch"/>
-        <nut-switch v-model="noChecked" active-text="开" inactive-text="关" v-else size="40px" @change="changeSwitch"/>
-        <!-- <nut-circleprogress :progress="item * 10" color="#1E90FF"> </nut-circleprogress> -->
+        <view @click.stop>
+          <nut-switch v-model="item.checked" active-text="开" inactive-text="关" size="40px" @change="changeSwitch"/>
+          <!-- <nut-switch v-model="noChecked" active-text="开" inactive-text="关" v-else size="40px" @change="changeSwitch"/> -->
+        </view>
       </view>
     </view>
     <CustomTabBar />
-    <!-- <view class="add-btn" @tap="addProduct">
-      <nut-icon name="uploader" color="#1E90FF" size="40px"></nut-icon>
-    </view> -->
     <nut-fixednav :position="{bottom:'280px' }" type="right" v-model:visible="showNav">
       <template v-slot:list>
-        <!-- <view class="option-list">
-          <view class="option-item">添加设备</view>
-          <view class="option-item">加注模版</view>
-          <view class="option-item">远程操控</view>
-        </view> -->
         <ul class="nut-fixednav__list">
             <li class="nut-fixednav__list-item" @tap="addProduct">添加设备</li>
             <li class="nut-fixednav__list-item" @tap="addPlanTemp">加注计划</li>
-            <!-- <li class="nut-fixednav__list-item">远程操控</li> -->
         </ul>
       </template>
       <template v-slot:btn>
@@ -54,8 +46,8 @@ import { getStorageSync } from '@/utils/storage'
 const state = reactive({
   options1: [
     { text: '全部设备', value: 0 },
-    { text: '正常设备', value: 1 },
-    { text: '废弃设备', value: 2 }
+    { text: '开启状态', value: 1 },
+    { text: '关闭状态', value: 2 }
   ],
   options2: [
     { text: '各项指标', value: 0 },
@@ -73,13 +65,20 @@ const state = reactive({
   value2: 0,
   value3: 'a'
 })
+let list = ref([
+  {checked: false, id: 1},
+  {checked: true, id: 2},
+  {checked: false, id: 3},
+  {checked: true, id: 4},
+  {checked: false, id: 5},
+])
 let checked = ref(false)
 let noChecked = ref(true)
 let showNav = ref(false)
 const navList = ref()
 const toDetail = () => {
   Taro.navigateTo({
-    url: '/package/product/pages/detail/index'
+    url: '/package/product/pages/add/index'
   })
 }
 useShareAppMessage((res) => {
@@ -98,7 +97,7 @@ const addPlanTemp = () => {
   })
 }
 const changeSwitch = (val, e) => {
-  e.stopPropagation()
+  console.log(val, e, 'changeSwitch')
 }
 const handleChange = () => {}
 onMounted(() => {
