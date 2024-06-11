@@ -15,6 +15,9 @@
         </div>
       </view>
     </view>
+    <view class="option-footer" @click.stop="addPlan">
+      添加计划
+    </view>
   </view>
 </template>
 <script setup>
@@ -24,8 +27,17 @@ import { useShareAppMessage } from '@tarojs/taro';
 import "./index.scss";
 import { redirect } from '@/utils/redirect';
 import { getStorageSync } from '@/utils/storage'
-let planlist = ref(20)
-const editPlan = () => {}
+let planlist = ref(4)
+const editPlan = () => {
+  redirect({
+    url: '/package/product/pages/addPlanTemp/index'
+  })
+}
+const addPlan = () => {
+  redirect({
+    url: '/package/product/pages/addPlanTemp/index'
+  })
+}
 const removePlan = () => {}
 onMounted(() => {
   const userInfo = getStorageSync('userInfo')

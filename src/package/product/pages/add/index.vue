@@ -2,10 +2,16 @@
   <view class="product-option-wrap">
     <nut-form>
       <nut-form-item label="设备名称">
-          <input class="nut-input-text" placeholder="请输入设备名称" type="text" />
+        <input class="nut-input-text" placeholder="请输入设备名称" type="text" />
       </nut-form-item>
       <nut-form-item label="编号">
-          <input class="nut-input-text" placeholder="请输入编号" type="text" />
+        <input class="nut-input-text" placeholder="编号" type="text" />
+      </nut-form-item>
+      <nut-form-item label="药剂">
+        <input class="nut-input-text" placeholder="药剂" type="text" />
+      </nut-form-item>
+      <nut-form-item label="剩余量">
+        <input class="nut-input-text" placeholder="剩余量" type="text" />
       </nut-form-item>
     </nut-form>
     <nut-cell>

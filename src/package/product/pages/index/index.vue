@@ -11,7 +11,7 @@
       <view class="equipment-item" v-for="item in 20" :key="item" @tap="toDetail">
         <view class="equipment-info">
           <text class="name">加注设备{{ item }}</text>
-          <text class="desc">压力：22，温度：50度,腐蚀效率：30%</text>
+          <text class="desc">压力：22， 温度：50度， 腐蚀效率：30%</text>
         </view>
         <nut-switch v-model="checked" active-text="开" inactive-text="关" v-if="item > 3" size="40px" @change="changeSwitch"/>
         <nut-switch v-model="noChecked" active-text="开" inactive-text="关" v-else size="40px" @change="changeSwitch"/>

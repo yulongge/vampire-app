@@ -16,6 +16,7 @@ export default {
         "pages/monitorAnalysic/index",
         "pages/analysicAll/index",
         "pages/planTemp/index",
+        "pages/addPlanTemp/index",
       ]
     },
     {
