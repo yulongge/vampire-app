@@ -4,22 +4,6 @@ export default {
   ],
   subpackages: [
     {
-      "root": "package/product",
-      "pages": [
-        "pages/index/index",
-        "pages/detail/index",
-        "pages/options/index",
-        "pages/add/index",
-        "pages/monitor/index",
-        "pages/monitorDetail/index",
-        "pages/addMonitor/index",
-        "pages/monitorAnalysic/index",
-        "pages/analysicAll/index",
-        "pages/planTemp/index",
-        "pages/addPlanTemp/index",
-      ]
-    },
-    {
       "root": "package/mine",
       "pages": [
         "pages/index/index",
@@ -39,6 +23,27 @@ export default {
       "pages": [
         "pages/index/index",
         "pages/addDept/index",
+      ]
+    },
+    {
+      "root": "package/product",
+      "pages": [
+        "pages/index/index",
+        "pages/detail/index",
+        "pages/options/index",
+        "pages/add/index",
+        "pages/planTemp/index",
+        "pages/addPlanTemp/index",
+      ]
+    },
+    {
+      "root": "package/monitor",
+      "pages": [
+        "pages/index/index",
+        "pages/monitorDetail/index",
+        "pages/addMonitor/index",
+        "pages/monitorAnalysic/index",
+        "pages/analysicAll/index",
       ]
     },
   ],

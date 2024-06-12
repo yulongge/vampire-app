@@ -17,7 +17,7 @@ import { ref, onMounted } from "vue";
 
 const tablist = [
   `/pages/index/index`,
-  `/package/product/pages/monitor/index`,
+  `/package/monitor/pages/index/index`,
   `/package/product/pages/index/index`,
   `/package/mine/pages/index/index`
 ]

@@ -24,13 +24,13 @@
 import { ref, onMounted, reactive } from "vue";
 import Taro from "@tarojs/taro";
 import { useShareAppMessage } from '@tarojs/taro';
-import CustomTabBar from '../../../../components/custom-tabbar/custom-tabbar'
+import CustomTabBar from '@/components/custom-tabbar/custom-tabbar'
 import "./index.scss";
 import { redirect } from '@/utils/redirect';
 import { getStorageSync } from '@/utils/storage'
 const toDetail = () => {
   Taro.navigateTo({
-    url: '/package/product/pages/monitorDetail/index'
+    url: '/package/monitor/pages/monitorDetail/index'
   })
 }
 useShareAppMessage((res) => {
@@ -40,12 +40,12 @@ useShareAppMessage((res) => {
 })
 const addMonitor = () => {
   Taro.navigateTo({
-    url: '/package/product/pages/addMonitor/index'
+    url: '/package/monitor/pages/addMonitor/index'
   })
 }
 const toAnalysisData = () => {
   Taro.navigateTo({
-    url: '/package/product/pages/analysicAll/index'
+    url: '/package/monitor/pages/analysicAll/index'
   })
 }
 onMounted(() => {
