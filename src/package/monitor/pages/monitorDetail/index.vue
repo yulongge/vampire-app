@@ -39,12 +39,12 @@ const delMonitor = () => {
 }
 const editMonitor = () => {
   Taro.navigateTo({
-    url: '/package/product/pages/addMonitor/index'
+    url: '/package/monitor/pages/addMonitor/index'
   })
 }
 const analytisData = () => {
   Taro.navigateTo({
-    url: '/package/product/pages/monitorAnalysic/index'
+    url: '/package/monitor/pages/monitorAnalysic/index'
   })
 }
 onMounted(() => {
