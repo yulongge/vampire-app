@@ -1,17 +1,23 @@
 <template>
   <view class="product-wrap">
     <view class="filter">
-      <nut-menu>
+      <!-- <nut-menu>
         <nut-menu-item v-model="state.value1" :options="state.options1" />
         <nut-menu-item v-model="state.value2" @change="handleChange" :options="state.options2" />
         <nut-menu-item v-model="state.value3" @change="handleChange" :options="state.options3" />
-      </nut-menu>
+      </nut-menu> -->
+      <nut-searchbar v-model="keyword">
+        <template v-slot:rightout>
+          <span @click="toSearchDevice">搜索</span>
+          <!-- <span class="add-con" @click="toAddUser"><nut-icon name="plus" ></nut-icon></span> -->
+        </template>
+      </nut-searchbar>
     </view>
     <view class="equipment-list">
-      <view class="equipment-item" v-for="item in list" :key="item.id" @tap="toDetail">
+      <view class="equipment-item" v-for="item in list" :key="item.id" @tap="toDetail(item)">
         <view class="equipment-info">
-          <text class="name">加注设备{{ item.id }}</text>
-          <text class="desc">状态：{{ item.checked ? '已开启' : '已关闭'}} 药剂：防腐剂, 药剂剩余量：30%</text>
+          <text class="name">{{ item.name }}</text>
+          <text class="desc">编号：{{item.number}} ，  部门：{{ item.departmentId }} ，  位置：{{ item.location }} </text>
         </view>
         <view @click.stop>
           <nut-switch v-model="item.checked" active-text="开" inactive-text="关" size="40px" @change="changeSwitch"/>
@@ -42,7 +48,10 @@ import { useShareAppMessage } from '@tarojs/taro';
 import CustomTabBar from '../../../../components/custom-tabbar/custom-tabbar'
 import "./index.scss";
 import { redirect } from '@/utils/redirect';
-import { getStorageSync } from '@/utils/storage'
+import { getStorageSync } from '@/utils/storage';
+import {
+  getDevices
+} from '@/api/product/product.ts'
 const state = reactive({
   options1: [
     { text: '全部设备', value: 0 },
@@ -65,20 +74,19 @@ const state = reactive({
   value2: 0,
   value3: 'a'
 })
-let list = ref([
-  {checked: false, id: 1},
-  {checked: true, id: 2},
-  {checked: false, id: 3},
-  {checked: true, id: 4},
-  {checked: false, id: 5},
-])
+let list = ref([])
 let checked = ref(false)
 let noChecked = ref(true)
 let showNav = ref(false)
 const navList = ref()
-const toDetail = () => {
+let params = ref({
+  pageNo: 1,
+  pageSize: 10
+})
+
+const toDetail = (item) => {
   Taro.navigateTo({
-    url: '/package/product/pages/add/index'
+    url: `/package/product/pages/add/index?id=${item.id}`
   })
 }
 useShareAppMessage((res) => {
@@ -100,6 +108,18 @@ const changeSwitch = (val, e) => {
   console.log(val, e, 'changeSwitch')
 }
 const handleChange = () => {}
+const getList = async () => {
+  const res = await getDevices({
+    ...params.value
+  })
+  console.log(res, 'getList')
+  list.value = res.map((item) => {
+    item.checked = false
+    return item
+  })
+}
+getList()
+const toSearchDevice = () => {}
 onMounted(() => {
   const userInfo = getStorageSync('userInfo')
   if (!userInfo?.id) {
