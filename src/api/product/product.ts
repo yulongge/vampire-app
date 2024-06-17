@@ -69,3 +69,17 @@ export const updateDevice = (data: any) => {
     mock: false
   })
 }
+
+/**
+ * 搜索设备
+ * @param data
+ * @returns
+ */
+export const searchDevices = (data: any) => {
+  return request({
+    url: `/device/fuzzy`,
+    method: "get",
+    data,
+    mock: false
+  })
+}

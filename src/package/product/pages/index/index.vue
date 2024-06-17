@@ -17,7 +17,7 @@
       <view class="equipment-item" v-for="item in list" :key="item.id" @tap="toDetail(item)">
         <view class="equipment-info">
           <text class="name">{{ item.name }}</text>
-          <text class="desc">编号：{{item.number}} ，  部门：{{ item.departmentId }} ，  位置：{{ item.location }} </text>
+          <text class="desc">编号：{{item.number}} ，  通信端口：{{ item.communicationPort }} ，  位置：{{ item.location }} </text>
         </view>
         <view @click.stop>
           <nut-switch v-model="item.checked" active-text="开" inactive-text="关" size="40px" @change="changeSwitch"/>
@@ -44,13 +44,14 @@
 <script setup>
 import { ref, onMounted, reactive } from "vue";
 import Taro from "@tarojs/taro";
-import { useShareAppMessage } from '@tarojs/taro';
+import { useShareAppMessage, useDidShow } from '@tarojs/taro';
 import CustomTabBar from '../../../../components/custom-tabbar/custom-tabbar'
 import "./index.scss";
 import { redirect } from '@/utils/redirect';
 import { getStorageSync } from '@/utils/storage';
 import {
-  getDevices
+  getDevices,
+  searchDevices
 } from '@/api/product/product.ts'
 const state = reactive({
   options1: [
@@ -78,6 +79,7 @@ let list = ref([])
 let checked = ref(false)
 let noChecked = ref(true)
 let showNav = ref(false)
+let keyword = ref('')
 const navList = ref()
 let params = ref({
   pageNo: 1,
@@ -110,7 +112,7 @@ const changeSwitch = (val, e) => {
 const handleChange = () => {}
 const getList = async () => {
   const res = await getDevices({
-    ...params.value
+    ...params.value,
   })
   console.log(res, 'getList')
   list.value = res.map((item) => {
@@ -118,8 +120,19 @@ const getList = async () => {
     return item
   })
 }
-getList()
-const toSearchDevice = () => {}
+const toSearchDevice = async () => {
+  const res = await searchDevices({
+    keyword: keyword.value
+  })
+  list.value = res.map((item) => {
+    item.checked = false
+    return item
+  })
+}
+useDidShow(() => {
+  getList()
+  showNav.value = false
+})
 onMounted(() => {
   const userInfo = getStorageSync('userInfo')
   if (!userInfo?.id) {

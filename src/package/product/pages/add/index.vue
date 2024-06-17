@@ -14,9 +14,9 @@
         <input class="nut-input-text" v-model="deviceForm.location" placeholder="请输入位置" type="text" />
       </nut-form-item>
       <nut-form-item label="所属部门" prop="departmentId" required>
-        <input class="nut-input-text" placeholder="请选择门店" type="text" v-model="deviceForm.departmentId" @click="showPickerDept"/>
+        <input class="nut-input-text" placeholder="请选择门店" type="text" v-model="deviceForm.departmentName" @click="showPickerDept"/>
         <nut-picker
-          v-model="deviceForm.departmentId"
+          v-model="selectedValue"
           v-model:visible="showDept"
           :columns="columns"
           title="部门选择"
@@ -34,6 +34,14 @@
     <nut-cell v-if="isEidt" >
       <nut-button block type="danger" size="large" style="margin-right: 10px" @click="delDevice">删除</nut-button>
     </nut-cell>
+    <nut-dialog
+      teleport="#app"
+      title="删除设备提示"
+      content="确定要删除设备吗？"
+      v-model:visible="delConfirmShow"
+      :onOk="toDel"
+    >
+    </nut-dialog>
   </view>
 </template>
 <script lang="ts" setup>
@@ -53,7 +61,7 @@ import {
 import { redirect } from '@/utils/redirect';
 import { getCurrentInstance } from '@tarojs/taro';
 import { getStorageSync } from '@/utils/storage'
-
+let delConfirmShow = ref(false)
 const deviceFormRef = ref<any>(null);
 let deviceForm = ref({
   name: '',
@@ -95,15 +103,22 @@ const getDept = async () => {
     }
     return tempItem
   })
+  // const params = getCurrentInstance().router.params
+  // const { id } = params
+  // if (id) {
+
+  // }
 }
+getDept()
 const showPickerDept = () => {
-  getDept()
+  // getDept()
   selectedValue.value = [deviceForm.value.departmentId]
   showDept.value = true
 }
-const confirm = ( { selectedValue, selectedOptions })=>{
+const confirm = ( { selectVal, selectedOptions })=>{
   deviceForm.value.departmentName = selectedOptions[0].text
   deviceForm.value.departmentId = selectedOptions[0].value
+  console.log(selectedValue.value, 'selectedValue.value')
 }
 
 const submit = () => {
@@ -131,6 +146,11 @@ const submit = () => {
 const getDetail = async (id) => {
   const res = await getDeviceInfo({id})
   deviceForm.value = res
+  selectedValue.value = [deviceForm.value.departmentId]
+  const tempDepts = columns.value.filter(item => item.value == deviceForm.value.departmentId)
+  if (tempDepts.length) {
+    deviceForm.value.departmentName = tempDepts[0].text
+  }
 }
 const isEidt = computed(() => {
   const params = getCurrentInstance().router.params
@@ -139,6 +159,9 @@ const isEidt = computed(() => {
   return id && userInfo.permission == 3
 })
 const delDevice = async () => {
+  delConfirmShow.value = true
+}
+const toDel = async () => {
   const res = await removeDevice([
     deviceForm.value.id
   ])
@@ -152,6 +175,9 @@ onMounted(() => {
   const { id } = params
   Taro.nextTick(() => {
     if (id) {
+      Taro.setNavigationBarTitle({
+        title: '设备信息'
+      })
       getDetail(id)
     }
   });
