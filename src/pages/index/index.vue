@@ -166,7 +166,7 @@ onMounted(() => {
           backgroundColor: '#7581BD'
         },
         handle: {
-          show: true,
+          show: false,
           color: '#7581BD'
         }
       },
