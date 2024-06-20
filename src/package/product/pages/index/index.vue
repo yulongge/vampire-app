@@ -36,7 +36,7 @@
         <ul class="nut-fixednav__list">
             <li class="nut-fixednav__list-item" @tap="addProduct">添加设备</li>
             <li class="nut-fixednav__list-item" @tap="addPlanTemp">加注计划</li>
-            <li class="nut-fixednav__list-item" @tap="addPlanTemp">统计报表</li>
+            <li class="nut-fixednav__list-item" @tap="toStatistics">统计报表</li>
         </ul>
       </template>
       <template v-slot:btn>
@@ -117,6 +117,11 @@ const addProduct = () => {
 const addPlanTemp = () => {
   Taro.navigateTo({
     url: '/package/product/pages/planTemp/index'
+  })
+}
+const toStatistics = () => {
+  Taro.navigateTo({
+    url: '/package/product/pages/statistics/index'
   })
 }
 const changeSwitch = (val, e) => {

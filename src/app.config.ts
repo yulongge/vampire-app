@@ -34,6 +34,7 @@ export default {
         "pages/add/index",
         "pages/planTemp/index",
         "pages/addPlanTemp/index",
+        "pages/statistics/index",
       ]
     },
     {

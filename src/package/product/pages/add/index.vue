@@ -24,11 +24,11 @@
         >
         </nut-picker>
       </nut-form-item>
-      <nut-form-item label="网络是否在线" prop="location" required label-width="130px">
+      <!-- <nut-form-item label="网络是否在线" prop="location" required label-width="130px">
         <span class="nut-input-text">在线</span>
-      </nut-form-item>
-      <nut-form-item label="开关状态" prop="location" required label-width="130px">
-        <span class="nut-input-text">开</span>
+      </nut-form-item> -->
+      <nut-form-item label="网络是否在线" prop="location" required label-width="130px">
+        <nut-switch v-model="checked" active-text="开" inactive-text="关" size="40px" />
       </nut-form-item>
       <nut-form-item label="流量" prop="location" required label-width="130px">
         <span class="nut-input-text">100M</span>
@@ -54,7 +54,7 @@
     </nut-form>
     <nut-cell>
       <nut-button type="info" size="normal" style="margin-right: 10px" @click="submit">{{ isEidt ? '修改' : '添加' }}</nut-button>
-      <nut-button color="#7232dd" type="danger" size="normal" style="margin-right: 10px" @click="operateDevice">操控</nut-button>
+      <nut-button color="#7232dd" type="danger" size="normal" style="margin-right: 10px" @click="operateDevice" v-if="isEidt">操控</nut-button>
       <nut-button type="danger" size="normal" style="margin-right: 10px" @click="delDevice" v-if="isEidt">删除</nut-button>
     </nut-cell>
     <nut-dialog
@@ -86,6 +86,7 @@ import { getCurrentInstance } from '@tarojs/taro';
 import { getStorageSync } from '@/utils/storage'
 let delConfirmShow = ref(false)
 const deviceFormRef = ref<any>(null);
+let checked = ref(true)
 let deviceForm = ref({
   name: '',
   number: '',

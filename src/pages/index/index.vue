@@ -47,7 +47,7 @@
     </view>
     
     <view class="line-canvas">
-      <view class="equipment-title">加注信息</view>
+      <view class="equipment-title">加注数据分析</view>
       <EChart ref="canvas" />
     </view>
     <CustomTabBar />
