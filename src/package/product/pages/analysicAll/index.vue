@@ -49,7 +49,7 @@ const radioVal = ref('0');
 let checkedFilter = ref(['1', '2', '3'])
 let showAnanysic = ref(false)
 let filterItems = ref([
-  {label: '1', value: '腐蚀效率'},
+  {label: '1', value: '效率'},
   {label: '2', value: 'ph值'},
   {label: '3', value: '厚度'},
 ])
@@ -194,7 +194,7 @@ const toAnalysis = () => {
           data: data
         },
         {
-          name: '腐蚀度',
+          name: 'ph',
           type: 'line',
           smooth: true,
           stack: 'a',

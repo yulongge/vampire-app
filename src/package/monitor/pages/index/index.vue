@@ -12,7 +12,7 @@
           <view class="desc">所属部门：xxx</view>
         </view>
         <nut-circleprogress :progress="item * 10" color="#fa2c19" stroke-width="6">
-          <p class="progress-tip">腐蚀度</p>
+          <p class="progress-tip">流速</p>
           <p class="progress-tip"> {{item * 10}} %</p>
         </nut-circleprogress>
       </view>

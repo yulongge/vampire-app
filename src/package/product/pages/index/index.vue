@@ -14,10 +14,15 @@
       </nut-searchbar>
     </view>
     <view class="equipment-list">
-      <view class="equipment-item" v-for="item in list" :key="item.id" @tap="toDetail(item)">
+      <view class="equipment-item" v-for="(item, index) in list" :key="item.id" @tap="toDetail(item)">
         <view class="equipment-info">
           <text class="name">{{ item.name }}</text>
           <text class="desc">编号：{{item.number}} ，  通信端口：{{ item.communicationPort }} ，  位置：{{ item.location }} </text>
+          <text class="desc">网络是否在线: 离线 ，  流量: 30m ，  计划完成度: 30% </text>
+          <view class="desc warn" v-if="warnText[index]">
+            <nut-icon name="tips" color="#fa2c19" size="16px"></nut-icon>
+            <text class="warn-tip"> {{ warnText[index] }}   </text>
+          </view>
         </view>
         <view @click.stop>
           <nut-switch v-model="item.checked" active-text="开" inactive-text="关" size="40px" @change="changeSwitch"/>
@@ -31,6 +36,7 @@
         <ul class="nut-fixednav__list">
             <li class="nut-fixednav__list-item" @tap="addProduct">添加设备</li>
             <li class="nut-fixednav__list-item" @tap="addPlanTemp">加注计划</li>
+            <li class="nut-fixednav__list-item" @tap="addPlanTemp">统计报表</li>
         </ul>
       </template>
       <template v-slot:btn>
@@ -53,6 +59,13 @@ import {
   getDevices,
   searchDevices
 } from '@/api/product/product.ts'
+const warnText = {
+  0: '网络离线',
+  1: '设备故障',
+  2: '',
+  3: '温度过低',
+  4: '液位过低',
+}
 const state = reactive({
   options1: [
     { text: '全部设备', value: 0 },
@@ -63,12 +76,12 @@ const state = reactive({
     { text: '各项指标', value: 0 },
     { text: '流速', value: 1 },
     { text: '温度', value: 3 },
-    { text: '腐蚀度', value: 4 },
+    { text: '效率', value: 4 },
     { text: '压力', value: 5 }
   ],
   options3: [
     { text: '默认排序', value: 'a' },
-    { text: '腐蚀度', value: 'b' },
+    { text: '效率', value: 'b' },
     { text: '厚度', value: 'c' },
   ],
   value1: 0,

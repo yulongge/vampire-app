@@ -47,7 +47,7 @@
     </view>
     
     <view class="line-canvas">
-      <view class="equipment-title">腐蚀信息</view>
+      <view class="equipment-title">加注信息</view>
       <EChart ref="canvas" />
     </view>
     <CustomTabBar />
@@ -227,7 +227,7 @@ onMounted(() => {
         data: data
       },
       {
-        name: '腐蚀度',
+        name: 'PH',
         type: 'line',
         smooth: true,
         stack: 'a',
@@ -267,7 +267,7 @@ usePageScroll((payload) => {
 })
 useShareAppMessage((res) => {
   return {
-    title: '腐蚀检测系统',
+    title: '检测系统',
   }
 })
 </script>

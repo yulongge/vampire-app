@@ -1,19 +1,19 @@
 <template>
   <view class="product-option-wrap">
     <nut-form :model-value="deviceForm" ref="deviceFormRef" :rules="rules">
-      <nut-form-item label="设备名称" prop="name" required>
+      <nut-form-item label="设备名称" prop="name" required label-width="130px">
         <input class="nut-input-text" v-model="deviceForm.name" placeholder="请输入设备名称" type="text" />
       </nut-form-item>
-      <nut-form-item label="编号" prop="number" required>
+      <nut-form-item label="编号" prop="number" required label-width="130px">
         <input class="nut-input-text" v-model="deviceForm.number" placeholder="请输入编号" type="text" />
       </nut-form-item>
-      <nut-form-item label="通信端口" prop="communicationPort" required>
+      <nut-form-item label="通信端口" prop="communicationPort" required label-width="130px">
         <input class="nut-input-text" v-model="deviceForm.communicationPort" placeholder="请输入通信端口" type="text" />
       </nut-form-item>
-      <nut-form-item label="位置" prop="location" required>
+      <nut-form-item label="位置" prop="location" required label-width="130px">
         <input class="nut-input-text" v-model="deviceForm.location" placeholder="请输入位置" type="text" />
       </nut-form-item>
-      <nut-form-item label="所属部门" prop="departmentId" required>
+      <nut-form-item label="所属部门" prop="departmentId" required label-width="130px">
         <input class="nut-input-text" placeholder="请选择门店" type="text" v-model="deviceForm.departmentName" @click="showPickerDept"/>
         <nut-picker
           v-model="selectedValue"
@@ -24,15 +24,38 @@
         >
         </nut-picker>
       </nut-form-item>
-      <nut-form-item label="备注" prop="remark">
+      <nut-form-item label="网络是否在线" prop="location" required label-width="130px">
+        <span class="nut-input-text">在线</span>
+      </nut-form-item>
+      <nut-form-item label="开关状态" prop="location" required label-width="130px">
+        <span class="nut-input-text">开</span>
+      </nut-form-item>
+      <nut-form-item label="流量" prop="location" required label-width="130px">
+        <span class="nut-input-text">100M</span>
+      </nut-form-item>
+      <nut-form-item label="计划完成度" prop="location" required label-width="130px">
+        <span class="nut-input-text">40%</span>
+      </nut-form-item>
+      <nut-form-item label="加注药剂的厂家" prop="location" required label-width="130px">
+        <span class="nut-input-text">河南龙旗公司</span>
+      </nut-form-item>
+      <nut-form-item label="药剂浓度" prop="location" required label-width="130px">
+        <span class="nut-input-text">50%</span>
+      </nut-form-item>
+      <nut-form-item label="药剂的液位" prop="location" required label-width="130px">
+        <span class="nut-input-text">30mm</span>
+      </nut-form-item>
+      <nut-form-item label="药剂的温度" prop="location" required label-width="130px">
+        <span class="nut-input-text">40度</span>
+      </nut-form-item>
+      <nut-form-item label="备注" prop="remark" label-width="130px">
         <input class="nut-input-text" v-model="deviceForm.remark" placeholder="请输入备注" type="text" />
       </nut-form-item>
     </nut-form>
     <nut-cell>
-      <nut-button block type="info" size="large" style="margin-right: 10px" @click="submit">{{ isEidt ? '修改' : '添加' }}</nut-button>
-    </nut-cell>
-    <nut-cell v-if="isEidt" >
-      <nut-button block type="danger" size="large" style="margin-right: 10px" @click="delDevice">删除</nut-button>
+      <nut-button type="info" size="normal" style="margin-right: 10px" @click="submit">{{ isEidt ? '修改' : '添加' }}</nut-button>
+      <nut-button color="#7232dd" type="danger" size="normal" style="margin-right: 10px" @click="operateDevice">操控</nut-button>
+      <nut-button type="danger" size="normal" style="margin-right: 10px" @click="delDevice" v-if="isEidt">删除</nut-button>
     </nut-cell>
     <nut-dialog
       teleport="#app"
@@ -168,6 +191,11 @@ const toDel = async () => {
   console.log(res, 'res')
   redirect({
     type: 'goback'
+  })
+}
+const operateDevice = () => {
+  redirect({
+    url: '/package/product/pages/options/index'
   })
 }
 onMounted(() => {
