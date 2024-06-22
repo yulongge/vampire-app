@@ -1,0 +1,30 @@
+.monitor-detail-analytis {
+  padding: 00rpx 40rpx;
+  .filter-list {
+    margin: 20rpx;
+    .filter-list-container {
+      display: flex;
+      align-items: center;
+    }
+    .filter-list-con {
+      display: flex;
+      border: 1rpx solid #efefef;
+      padding: 20rpx;
+      margin-left: 20rpx;
+      .filter-list-item {
+        margin-right: 20rpx;
+      }
+    }
+  }
+  .option-btn {
+    margin-top: 20rpx;
+  }
+  .analysis-canvas {
+    position: relative;
+    width: 100%;
+    height: 600rpx;
+    padding: 0px 10rpx;
+    box-sizing: border-box;
+    margin-bottom: 160rpx;
+  }
+}

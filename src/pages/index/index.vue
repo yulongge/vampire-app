@@ -21,7 +21,7 @@
       <view class="app-main-top">
         <map
           id="map"
-          style="width: 100%; height: 300px;"
+          style="width: 100%; height: 250px;"
           :longitude="nowLocation.longitude"
           :latitude="nowLocation.latitude"
           scale="14"
@@ -45,7 +45,9 @@
       </view> -->
       
     </view>
-    
+    <div class="warn-tip">
+      <nut-barrage ref="danmu" :danmu="danmulist" :rows="1" :speeds="3000" :frequency="1000"></nut-barrage>
+    </div>
     <view class="line-canvas">
       <view class="equipment-title">加注数据分析</view>
       <EChart ref="canvas" />
@@ -74,6 +76,7 @@ const list = ref([
   'https://yulongge.github.io/images/fushi/banner4.jpeg',
   'https://yulongge.github.io/images/fushi/banner5.jpeg'
 ])
+let danmulist = ref(['加注设备1药剂不足', '加注设备3离线', '加注设备2温度过高']);
 const toDetail = () => {
   Taro.navigateTo({
     url: '/package/product/pages/detail/index'

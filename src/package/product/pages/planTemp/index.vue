@@ -15,9 +15,15 @@
         </div>
       </view>
     </view>
-    <view class="option-footer" @click.stop="addPlan">
-      添加计划
-    </view>
+    <div class="plan-footer">
+      <view class="option-footer" @click.stop="addPlan">
+        添加计划
+      </view>
+      <view class="option-footer" @click.stop="comparePlan">
+        加注计划分析
+      </view>
+    </div>
+    
     <nut-dialog
       teleport="#app"
       title="删除模版提示"
@@ -55,6 +61,11 @@ const removePlan = (item) => {
 const toDel = async () => {
   // await delUser({userId: currentUser.value.id})
   // getUserList()
+}
+const comparePlan = () => {
+  redirect({
+    url: '/package/product/pages/planCompare/index'
+  })
 }
 onMounted(() => {
   const userInfo = getStorageSync('userInfo')

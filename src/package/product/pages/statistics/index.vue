@@ -42,6 +42,7 @@ import "./index.scss";
 import * as echarts from "echarts4taro3/lib/assets/echarts"; // 这里用了内置的，也可以用自定义的 echarts.js
 import { EChart, loadEcharts } from "echarts4taro3";
 loadEcharts(echarts);
+import { redirect } from '@/utils/redirect';
 const canvas = ref(null);
 const date = ref([moment().subtract(7, 'days').format('YYYY-MM-DD'), moment().format('YYYY-MM-DD')])
 let isVisible = ref(false)
@@ -165,7 +166,10 @@ const summary = () => {
   };
 }
 const toAnalysis = () => {
-  showAnanysic.value = true
+  // showAnanysic.value = true
+  redirect({
+    url: '/package/product/pages/table/index'
+  })
 }
 onMounted(() => {
   Taro.nextTick(() => {

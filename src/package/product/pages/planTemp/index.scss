@@ -28,17 +28,20 @@
       }
     }
   }
+  .plan-footer {
+    position: fixed;
+    bottom: 180rpx;
+    left: 32rpx;
+    right: 32rpx;
+  }
   .option-footer {
     border: 1px solid #3c65f7;
     height: 90rpx;
     line-height: 90rpx;
     text-align: center;
     border-radius: 8rpx;
-    position: fixed;
-    bottom: 180rpx;
     color: #3c65f7;
-    left: 32rpx;
-    right: 32rpx;
     font-size: 32rpx;
+    margin-bottom: 40rpx;
   }
 }
