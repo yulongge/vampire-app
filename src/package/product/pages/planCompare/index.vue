@@ -1,9 +1,13 @@
 <template>
   <view class="plan-compare">
     <view class="planlist">
-      <div class="plan-item" :class="{'plan-item-select': index == 0 || index == 2}" v-for="(item, index) in planlist" :key="index" >
+      <div
+        class="plan-item"
+        :class="{'plan-item-select': selectPlanList.includes(item)}"
+        @click="selectPlan(item)"
+        v-for="(item, index) in planlist" :key="index" >
         <span class="plan-name">加注计划 {{ index + 1 }}</span>
-        <nut-icon name="Check" v-if="index == 0 || index == 2" color="blue"></nut-icon>
+        <nut-icon name="Check" v-if="selectPlanList.includes(item)" color="blue"></nut-icon>
       </div>
     </view>
     <div class="filter-list">
@@ -25,8 +29,16 @@ loadEcharts(echarts);
 const canvas = ref(null);
 let showAnanysic = ref(false)
 const planlist = ref(4)
+let selectPlanList = ref([])
+const selectPlan = (item) => {
+  if (selectPlanList.value.includes(item)) {
+    let findIndex = selectPlanList.value.indexOf(item)
+    selectPlanList.value.splice(findIndex, 1)
+  } else {
+    selectPlanList.value.push(item)
+  }
+}
 const toAnalysis = () => {
-  console.log('ananlysis')
   showAnanysic.value = true
   Taro.nextTick(() => {
     const echartComponentInstance = canvas.value;
