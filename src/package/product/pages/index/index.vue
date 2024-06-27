@@ -25,7 +25,7 @@
           </view>
         </view>
         <view @click.stop>
-          <nut-switch v-model="item.checked" active-text="开" inactive-text="关" size="40px" @change="changeSwitch"/>
+          <nut-switch v-model="item.checked" active-text="开" inactive-text="关" size="40px" @change="changeSwitch(item)"/>
           <!-- <nut-switch v-model="noChecked" active-text="开" inactive-text="关" v-else size="40px" @change="changeSwitch"/> -->
         </view>
       </view>
@@ -59,6 +59,9 @@ import {
   getDevices,
   searchDevices
 } from '@/api/product/product.ts'
+import {
+  sendCmd
+} from '@/api/product/cmd.ts'
 const warnText = {
   0: '网络离线',
   1: '设备故障',
@@ -124,8 +127,14 @@ const toStatistics = () => {
     url: '/package/product/pages/statistics/index'
   })
 }
-const changeSwitch = (val, e) => {
-  console.log(val, e, 'changeSwitch')
+const changeSwitch = async (item) => {
+  console.log(item, item.checked, 'changeSwitch')
+  const res = await sendCmd({
+    number: item.number,
+    communicationPort: item.communicationPort,
+    cmd: item.checked ? 'TURN_ON' : 'TURN_OFF'
+  })
+  console.log(res, 'changeSwitch')
 }
 const handleChange = () => {}
 const getList = async () => {
