@@ -32,21 +32,17 @@
         />
       </view>
     </view>
-    <view class="app-main">
-      <!-- <view class="equipment-list">
-        <view class="equipment-title">关注设备</view>
-        <view class="equipment-item" v-for="item in 5" :key="item" @tap="toDetail">
-          <view class="equipment-info">
-            <text class="name">设备{{ item }}</text>
-            <text class="desc">压力：22，温度：50度,腐蚀效率：30%</text>
-          </view>
-          <nut-circleprogress :progress="item * 10" color="#1E90FF"> </nut-circleprogress>
-        </view>
-      </view> -->
-      
-    </view>
+    <view class="app-main"> </view>
     <div class="warn-tip">
-      <nut-barrage ref="danmu" :danmu="danmulist" :rows="1" :speeds="3000" :frequency="1000"></nut-barrage>
+      <!-- <nut-barrage ref="danmu" :danmu="danmulist" :rows="1" :speeds="3000" :frequency="1000"></nut-barrage> -->
+      <div class="tip-item">
+        <nut-icon name="notice" color="#3845FE"></nut-icon>
+        <span class="tip-desc">加注设备1药剂不足,请及时检查设备</span>
+      </div>
+      <div class="tip-item">
+        <nut-icon name="notice" color="#3845FE"></nut-icon>
+        <span class="tip-desc">加注设备1药剂不足,请及时检查设备</span>
+      </div>
     </div>
     <view class="line-canvas">
       <view class="equipment-title">加注数据分析</view>

@@ -14,21 +14,25 @@
       </nut-searchbar>
     </view>
     <view class="equipment-list">
-      <view class="equipment-item" v-for="(item, index) in list" :key="item.id" @tap="toDetail(item)">
-        <view class="equipment-info">
-          <text class="name">{{ item.name }}</text>
-          <text class="desc">编号：{{item.number}} ，  通信端口：{{ item.communicationPort }} ，  位置：{{ item.location }} </text>
-          <text class="desc">网络是否在线: 离线 ，  流量: 30m ，  计划完成度: 30% </text>
-          <view class="desc warn" v-if="warnText[index]">
-            <nut-icon name="tips" color="#fa2c19" size="16px"></nut-icon>
-            <text class="warn-tip"> {{ warnText[index] }}   </text>
+      <nut-list :height="50" :listData="list" @scroll-bottom="handleScroll">
+        <template v-slot="{ item, index }">
+          <view class="equipment-item" @tap="toDetail(item)">
+            <view class="equipment-info">
+              <text class="name">{{ item.name }}</text>
+              <text class="desc">编号：{{item.number}} ，  通信端口：{{ item.communicationPort }} ，  位置：{{ item.location }} </text>
+              <text class="desc">网络是否在线: 离线 ，  流量: 30m ，  计划完成度: 30% </text>
+              <view class="desc warn" v-if="warnText[index]">
+                <nut-icon name="tips" color="#fa2c19" size="16px"></nut-icon>
+                <text class="warn-tip"> {{ warnText[index] }}   </text>
+              </view>
+            </view>
+            <view @click.stop>
+              <nut-switch v-model="item.checked" active-text="开" inactive-text="关" size="40px" @change="changeSwitch(item)"/>
+              <!-- <nut-switch v-model="noChecked" active-text="开" inactive-text="关" v-else size="40px" @change="changeSwitch"/> -->
+            </view>
           </view>
-        </view>
-        <view @click.stop>
-          <nut-switch v-model="item.checked" active-text="开" inactive-text="关" size="40px" @change="changeSwitch(item)"/>
-          <!-- <nut-switch v-model="noChecked" active-text="开" inactive-text="关" v-else size="40px" @change="changeSwitch"/> -->
-        </view>
-      </view>
+        </template>
+      </nut-list>
     </view>
     <CustomTabBar />
     <nut-fixednav :position="{bottom:'280px' }" type="right" v-model:visible="showNav">
@@ -99,9 +103,10 @@ let keyword = ref('')
 const navList = ref()
 let params = ref({
   pageNo: 1,
-  pageSize: 10
+  pageSize: 10,
+  hasMore: true
 })
-
+let isLoadingData = ref(false)
 const toDetail = (item) => {
   Taro.navigateTo({
     url: `/package/product/pages/add/index?id=${item.id}`
@@ -138,14 +143,23 @@ const changeSwitch = async (item) => {
 }
 const handleChange = () => {}
 const getList = async () => {
+  isLoadingData.value = true
   const res = await getDevices({
     ...params.value,
   })
   console.log(res, 'getList')
-  list.value = res.map((item) => {
+  
+  if (res.length < params.value.pageSize) {
+    params.value.hasMore = false
+  }
+  list.value = list.value.concat(res)
+  list.value = list.value.map((item) => {
     item.checked = false
     return item
   })
+  Taro.nextTick(() => {
+    isLoadingData.value = false
+  });
 }
 const toSearchDevice = async () => {
   const res = await searchDevices({
@@ -155,6 +169,13 @@ const toSearchDevice = async () => {
     item.checked = false
     return item
   })
+}
+const handleScroll = () => {
+  if (isLoadingData.value) return
+  if (keyword.value) return
+  if (!params.value.hasMore) return
+  params.value.pageNo = params.value.pageNo + 1
+  getList()
 }
 useDidShow(() => {
   getList()
