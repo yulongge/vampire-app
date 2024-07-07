@@ -3,11 +3,35 @@
     <nut-searchbar v-model="keyword" @clear="clearSearch">
       <template v-slot:rightout>
         <span @click="toSearchDept">搜索</span>
+        <!-- <span class="add-con" @click="toAddUser"><nut-icon name="plus" ></nut-icon></span> -->
       </template>
     </nut-searchbar>
     <div class="dept-content">
       <div class="dept-list" v-if="deptlist.length">
-        <Tree :tree-data="treeData"/>
+        <div v-for="item in deptlist" :key="item.id" class="dept-item">
+          <div class="dept-name">
+            <nut-icon name="triangle-down" v-if="item.children"></nut-icon>
+            <span class="dept-name-value">{{ item.departmentName }}</span>
+            <p class="options">
+              <nut-icon name="edit" @click="editDept(item)"></nut-icon>
+              <nut-icon name="plus" @click="addDept(item)"></nut-icon>
+              <nut-icon name="del" @click="showDelConfirm(item)"></nut-icon>
+            </p>
+          </div>
+          <div class="dept-sub-list" v-if="item.children">
+            <div class="dept-sub-item" v-for="sub1 in item.children" :key="sub1.id">
+              <div class="dept-sub-name">
+                <nut-icon name="rect-right" v-if="sub1.children"></nut-icon>
+                <span class="dept-sub-name-value">{{ sub1.departmentName }}</span>
+                <p class="options">
+                  <nut-icon name="edit" @click="editDept(sub1)"></nut-icon>
+                  <!-- <nut-icon name="plus" @click="addDept(sub1)"></nut-icon> -->
+                  <nut-icon name="del" @click="showDelConfirm(sub1)"></nut-icon>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <nut-empty image="empty" description="暂无部门数据" v-else></nut-empty>
       <nut-button type="info" block @click="addDept" class="add-btn" v-if="!isSearching">添加部门</nut-button>
@@ -36,38 +60,11 @@ import {
   delDept,
   searchDepts,
 } from '@/api/dept/dept.ts'
-import Tree from '../../components/tree/index.vue'
 let deptlist = ref([])
 let delConfirmShow = ref(false)
 let currentDept = ref({})
 let keyword = ref('')
 let isSearching = ref(false)
-const treeData = [  
-  {  
-    id: 1,  
-    name: 'Level 1',  
-    children: [  
-      {  
-        id: 2,  
-        name: 'Level 2',  
-        children: [  
-          {  
-            id: 3,  
-            name: 'Level 3',  
-            children: [  
-              {  
-                id: 4,  
-                name: 'Level 4',  
-                children: [] // 可以继续添加更多层  
-              }  
-            ]  
-          }  
-        ]  
-      }  
-    ]  
-  }  
-  // 可以继续添加更多 Level 1 节点  
-];
 const computeDepts = (data, type = '') => {
   let tempData = Object.assign([], data)
   if (!type) {
