@@ -15,16 +15,49 @@
     position: relative;
     padding: 200rpx 32rpx 0rpx 32rpx;
     box-sizing: border-box;
-    background-image: linear-gradient(to top, #3945FD 0%, #3641FC 100%);
+    // background-image: linear-gradient(to top, #3945FD 0%, #3641FC 100%);
+    background-color: #FFFFFF;
     border-bottom-left-radius: 80rpx;
     border-bottom-right-radius: 80rpx;
     .static-data {
       width: 100%;
-      border-radius: 10rpx;
+      border-radius: 20rpx;
       box-sizing: border-box;
       overflow: hidden;
       img {
         border-radius: 10rpx;
+      }
+      .dashboard {
+        height: 200rpx;
+        background-color: #688DFE;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .data-panels {
+          flex: 1;
+          display: flex;
+          // height: 240rpx;
+          .data-panel {
+            flex: 1;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            .data-title {
+
+            }
+            .data-count {
+              font-weight: 500;
+              font-size: 40rpx;
+              margin-top: 20rpx;
+            }
+          }
+          .data-panel:first-child {
+            border-right: 1rpx solid #ffffff;
+          }
+        }
       }
     }
     .top-tip {
@@ -45,7 +78,7 @@
   }
   .app-main {
     background-color: #ffffff;
-    min-height: 235rpx;
+    min-height: 180rpx;
     padding: 0px 32rpx;
     box-sizing: border-box;
     border-bottom-left-radius: 20rpx;

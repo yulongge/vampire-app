@@ -5,7 +5,7 @@ import Taro from "@tarojs/taro"
  * @returns code 0表示成功
  */
 export const request = ({
-  host = `http://124.70.59.96`,//`http://gy1618.cn`,
+  host = `https://gy1618.cn`, // `http://124.70.59.96`,//`http://gy1618.cn`,
   url = '',
   data = {},
   method = 'POST',

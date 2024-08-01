@@ -5,7 +5,7 @@
     <!-- 头部内容 -->
     <view class="app-top">
       <view class="static-data">
-        <nut-swiper
+        <!-- <nut-swiper
           :init-page="2"
           :auto-play="3000"
           pagination-visible
@@ -15,7 +15,27 @@
           <nut-swiper-item v-for="(item, index) in list" :key="index" style="height: 150px">
             <img :src="item" alt="" style="height: 100%; width: 100%" draggable="false" />
           </nut-swiper-item>
-        </nut-swiper>
+        </nut-swiper> -->
+        <view class="dashboard">
+          <view class="data-panels">
+            <view class="data-panel">
+              <text class="data-title">总设备</text>
+              <text class="data-count">55</text>
+            </view>
+            <view class="data-panel">
+              <text class="data-title">检测设备</text>
+              <text class="data-count">22</text>
+            </view>
+            <view class="data-panel">
+              <text class="data-title">加注设备</text>
+              <text class="data-count">13</text>
+            </view>
+            <view class="data-panel">
+              <text class="data-title">超声测厚仪</text>
+              <text class="data-count">20</text>
+            </view>
+          </view>
+        </view>
       </view>
       <!-- 关注设备信息-饼状图 -->
       <view class="app-main-top">
