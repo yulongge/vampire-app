@@ -38,6 +38,14 @@
     <nut-cell v-if="isEidt">
       <nut-button block type="info" @click="updateInfo">修改</nut-button>
     </nut-cell>
+    <nut-cell>
+      <nut-checkbox v-model="isCheckUserAgree" label="复选框">同意</nut-checkbox>
+      <span class="agreement-text" @click="toUserAgreePage">《用户服务协议》</span>
+    </nut-cell>
+    <nut-cell>
+      <nut-checkbox v-model="isCheckPrivacyAgree" label="复选框">同意</nut-checkbox>
+      <span class="agreement-text" @click="toUserPrivacyPage">《隐私协议》</span>
+    </nut-cell>
   </view>
 </template>
 <script setup>
@@ -68,12 +76,21 @@ let userForm = ref({
   permission: '',
   remark: ''
 });
+let isCheckUserAgree = ref(false)
+let isCheckPrivacyAgree = ref(false)
 const rules = {}
 const getInfo = async (userId) => {
   const res = await getUserInfo({userId})
   userForm.value = res
 }
 const updateInfo = async () => {
+  if (!isCheckUserAgree.value || !isCheckPrivacyAgree.value) {
+    Taro.showToast({
+      title: '请同意服务协议',
+      icon: 'none'
+    })
+    return
+  }
   const res = await updateUser({
     ...userForm.value
   })
@@ -112,6 +129,18 @@ const isEidt = computed(() => {
   memberId.value = userInfo.id
   return userId == userInfo.id || userInfo.permission == 3
 })
+const toUserAgreePage = () => {
+  redirect({
+    type: 'navigateTo',
+    url: '/package/agreement/pages/user/index'
+  })
+}
+const toUserPrivacyPage = () => {
+  redirect({
+    type: 'navigateTo',
+    url: '/package/agreement/pages/privacy/index'
+  })
+}
 onMounted(() => {
   const params = getCurrentInstance().router.params
   const { userId } = params

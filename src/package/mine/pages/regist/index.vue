@@ -50,13 +50,11 @@
   </view>
 </template>
 <script lang="ts" setup>
-import { ref, onMounted, reactive } from "vue";
+import { ref } from "vue";
 import { useStore } from 'vuex'
 import Taro from "@tarojs/taro";
 import regUtil from "@/utils/regexp"
-import { redirect } from '@/utils/redirect';
 import "./index.scss";
-import { Toast } from '@nutui/nutui-taro';
 import {
   addUser
 } from '@/api/user/user.ts'

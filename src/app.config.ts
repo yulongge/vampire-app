@@ -49,6 +49,13 @@ export default {
         "pages/analysicAll/index",
       ]
     },
+    {
+      "root": "package/agreement",
+      "pages": [
+        "pages/user/index",
+        "pages/privacy/index",
+      ]
+    },
   ],
   // tabBar: {
   //   color: "#333",
